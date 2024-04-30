@@ -1,13 +1,29 @@
-import React from "react";
-
+import React, { lazy } from "react";
+const Filters = lazy(() => import("../component/products/Filters"));
+const Product = lazy(() => import("../component/products/Product"));
+const Pagination = lazy(() => import("../component/Pagination"));
 function Products() {
   return (
-    <div>
-      <div>Filters</div>
+    <div className="flex space-x-3">
+      <aside>
+        <Filters></Filters>
+      </aside>
 
-      <div>grid and list view</div>
+      <div className="absolute right-5 mt-3 bg-green-300">
+        <label htmlFor="sortSelect">Sort By:</label>
+        <select name="" id="sortSelect">
+          <option value="">high to low</option>
+          <option value="">low to high</option>
+        </select>
+      </div>
 
-      <div>products</div>
+      <div className="mt-10">
+        <Product />
+
+        <div>
+          <Pagination />
+        </div>
+      </div>
     </div>
   );
 }

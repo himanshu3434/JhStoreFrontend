@@ -4,6 +4,7 @@ import { VscGraph } from "react-icons/vsc";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { LuBox } from "react-icons/lu";
+
 import AdminSideBarItems from "./AdminSideBarItems";
 function AdminSideBar() {
   return (
@@ -12,11 +13,29 @@ function AdminSideBar() {
 
       <div className=" ">
         <ul className="flex-col items-center justify-center space-y-3 ">
-          <AdminSideBarItems Icon={LuLayoutDashboard} name="DashBoard" />
-          <AdminSideBarItems Icon={VscGraph} name="Statistics" />
-          <AdminSideBarItems Icon={FaRegUserCircle} name="Users" />
-          <AdminSideBarItems Icon={MdOutlineInventory2} name="Inventory" />
-          <AdminSideBarItems Icon={LuBox} name="Orders" />
+          <AdminSideBarItems
+            Icon={LuLayoutDashboard}
+            name="DashBoard"
+            to="/admin/dashboard"
+          />
+          <AdminSideBarItems
+            Icon={VscGraph}
+            name="Statistics"
+            to="/admin/statistics"
+          />
+          <AdminSideBarItems
+            Icon={FaRegUserCircle}
+            name="Users"
+            to="/admin/users"
+          />
+
+          <AdminSideBarItems
+            Icon={MdOutlineInventory2}
+            name="Inventory"
+            to="/admin/inventory"
+          />
+
+          <AdminSideBarItems Icon={LuBox} name="Orders" to="/admin/orders" />
         </ul>
       </div>
     </div>
