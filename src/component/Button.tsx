@@ -1,7 +1,7 @@
 import React from "react";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  bgColor: string;
-  textColor: string;
+  bgColor?: string;
+  textColor?: string;
 }
 export default function Button({
   children,

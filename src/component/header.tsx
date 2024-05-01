@@ -62,6 +62,15 @@ function Header() {
             <p className=" text-[.7rem] leading-3">Profile</p>
           </div>{" "}
         </NavLink>
+        <NavLink to="/login">
+          {" "}
+          <div className="">
+            <div className=" flex justify-center">
+              <FaUser />
+            </div>
+            <p className=" text-[.7rem] leading-3">login</p>
+          </div>{" "}
+        </NavLink>
       </div>
     </div>
   );
