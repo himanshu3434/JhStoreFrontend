@@ -25,4 +25,22 @@ const fetchAllCategories = async () => {
 
   return allCategories;
 };
-export { addCategory, fetchAllCategories };
+
+const createNewProduct = async (data: FieldValues) => {
+  const createProductUrl = `${import.meta.env.VITE_SERVER_URL}/product/create`;
+
+  console.log("adminApi", data);
+  const options = {
+    method: "POST",
+    url: createProductUrl,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    data: data,
+  };
+  const createProductResponse = await axios.request(options);
+
+  return createProductResponse;
+};
+
+export { addCategory, fetchAllCategories, createNewProduct };

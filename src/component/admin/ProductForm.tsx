@@ -3,9 +3,11 @@ import { FieldValues, useForm } from "react-hook-form";
 import Input from "../Input";
 import Button from "../Button";
 import Select from "../Select";
-import { fetchAllCategories } from "../../api/adminApi";
+import { createNewProduct, fetchAllCategories } from "../../api/adminApi";
+import { useNavigate } from "react-router-dom";
 function ProductForm(product: FieldValues) {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const getAllCategories = async () => {
     const allCategories = await fetchAllCategories();
@@ -19,9 +21,26 @@ function ProductForm(product: FieldValues) {
     getAllCategories();
   }, []);
 
-  const onSubmit = async (data: FieldValues) => {};
+  const onSubmit = async (data: FieldValues) => {
+    data.coverPhoto = data.coverPhoto[0];
+    data.photo1 = data.photo1[0];
+    data.photo2 = data.photo2[0];
+    data.photo3 = data.photo3[0];
+    //console.log("sending data", data);
+
+    const createProductResponse = await createNewProduct(data);
+    // console.log("recieved ", createProductResponse);
+    if (createProductResponse.data.success) {
+      // console.log("successs ", createProductResponse.data);
+      navigate("/admim/inventory");
+    }
+  };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-wrap"
+      encType="multipart/form-data"
+    >
       <div className="">
         <Input
           label="Name :"
@@ -54,7 +73,7 @@ function ProductForm(product: FieldValues) {
           type="file"
           className=" bg-gray-200"
           accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("coverImage", { required: !product })}
+          {...register("coverPhoto", { required: !product })}
         />
         <Input
           label="Product Image1 :"
