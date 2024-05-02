@@ -6,9 +6,8 @@ import Button from "../Button";
 import { FieldValues, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { updateFilter } from "../../features/filterSlice";
-type filterHandler =
-  | ChangeEvent<HTMLSelectElement>
-  | ChangeEvent<HTMLInputElement>;
+import { filterHandler } from "../../types/types";
+
 function Filters() {
   const { handleSubmit, register } = useForm();
   const [categories, setCategories] = useState([]);

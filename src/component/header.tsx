@@ -5,7 +5,19 @@ import { NavLink } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import Input from "./Input";
+import { FieldValues, useForm } from "react-hook-form";
+import Button from "./Button";
+import { useDispatch } from "react-redux";
+import { updateFilter } from "../features/filterSlice";
 function Header() {
+  const { handleSubmit, register } = useForm();
+  const dispatch = useDispatch();
+  const searchFilterHandler = (data: FieldValues) => {
+    data = data.search;
+
+    dispatch(updateFilter({ data, id: "search" }));
+  };
   return (
     <div className="flex justify-between shadow-md px-2 md:px-10">
       <div>
@@ -13,9 +25,16 @@ function Header() {
           <img src="/JhStore_transparent.png" alt="" className="w-20" />
         </a>
       </div>
-      <div className="w-1/3 flex items-center justify-end space-x-3 ">
-        <div>search</div>
+      <div>
+        <form onSubmit={handleSubmit(searchFilterHandler)} className="flex ">
+          <Input {...register("search", { required: true })} className="mt-5" />
+          <Button type="submit" className="  ">
+            Go
+          </Button>
+        </form>
+      </div>
 
+      <div className="w-1/3 flex items-center justify-end space-x-3 ">
         <NavLink to="/">
           {" "}
           <div className="">

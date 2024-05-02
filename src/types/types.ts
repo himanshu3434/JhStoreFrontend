@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export interface IProduct extends Document {
   _id: string;
   name: string;
@@ -12,3 +14,7 @@ export interface IProduct extends Document {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export type filterHandler =
+  | ChangeEvent<HTMLSelectElement>
+  | ChangeEvent<HTMLInputElement>;

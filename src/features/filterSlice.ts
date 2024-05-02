@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { startTransition } from "react";
 
 const initialState = {
   search: "",
@@ -37,12 +36,7 @@ const FilterSlice = createSlice({
           break;
       }
 
-      console.log(
-        "state value after updation",
-        state.minPrice,
-        "    max   ",
-        state.maxPrice
-      );
+      console.log("state value after updation", state.search);
     },
 
     clearFilter: (state) => {
