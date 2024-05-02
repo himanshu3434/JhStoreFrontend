@@ -1,4 +1,5 @@
 import React, { lazy } from "react";
+import Select from "../component/Select";
 const Filters = lazy(() => import("../component/products/Filters"));
 const Product = lazy(() => import("../component/products/Product"));
 const Pagination = lazy(() => import("../component/Pagination"));
@@ -10,10 +11,9 @@ function Products() {
       </aside>
 
       <div className="absolute right-5 mt-3 bg-green-300">
-        <label htmlFor="sortSelect">Sort By:</label>
-        <select name="" id="sortSelect">
-          <option value="">high to low</option>
-          <option value="">low to high</option>
+        <select>
+          <option value="asc">Low to High</option>
+          <option value="dsc">High To Low</option>
         </select>
       </div>
 
