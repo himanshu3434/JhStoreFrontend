@@ -9,6 +9,7 @@ const WishList = lazy(() => import("./pages/WishList"));
 const Inventory = lazy(() => import("./pages/admin/Inventory"));
 const Login = lazy(() => import("./component/Login"));
 const Signup = lazy(() => import("./component/Signup"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 import Loading from "./component/Loading";
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/wishList" element={<WishList />} />
           </Routes>
           <Routes>

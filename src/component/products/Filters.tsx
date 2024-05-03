@@ -4,19 +4,24 @@ import Select from "../Select";
 import Input from "../Input";
 import Button from "../Button";
 import { FieldValues, useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateFilter } from "../../features/filterSlice";
 import { filterHandler } from "../../types/types";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../store/Store";
 
 function Filters() {
   const { handleSubmit, register } = useForm();
   const [categories, setCategories] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const currentFilters = useSelector((state: RootState) => state.filter);
   const getAllCategories = async () => {
     const allCategories = await fetchAllCategories();
     console.log("category all response ", allCategories);
     if (allCategories.data.success) {
       setCategories(allCategories.data.data);
+
       console.log("category all ", allCategories.data.data);
     }
   };
@@ -26,6 +31,7 @@ function Filters() {
 
   const priceFilterChangeHandler = async (data: FieldValues) => {
     dispatch(updateFilter({ data: data, id: "price" }));
+    navigate("/products");
   };
   const FilterChangeHandler = async (e: filterHandler) => {
     dispatch(
@@ -34,6 +40,8 @@ function Filters() {
         id: e.target.id,
       })
     );
+
+    navigate("/products");
   };
   return (
     <div className="h-screen bg-blue-400 w-[17vw] ">
@@ -47,6 +55,7 @@ function Filters() {
       <select
         className="text-black"
         id="category"
+        defaultValue={currentFilters.category}
         onChange={FilterChangeHandler}
       >
         {categories?.map((option) => (

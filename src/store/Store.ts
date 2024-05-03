@@ -7,3 +7,4 @@ export const Store = configureStore({
     filter: filterSlice,
   },
 });
+export type RootState = ReturnType<typeof Store.getState>;

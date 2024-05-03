@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   search: "",
   category: "",
-  sort: "",
+  sort: "asc",
   review: "",
   minPrice: "",
   maxPrice: "",
@@ -42,7 +42,7 @@ const FilterSlice = createSlice({
     clearFilter: (state) => {
       state.search = "";
       state.category = "";
-      state.sort = "";
+      state.sort = "asc";
       state.review = "";
       state.minPrice = "";
       state.maxPrice = "";
