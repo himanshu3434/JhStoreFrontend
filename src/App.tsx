@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 const Admin = lazy(() => import("./pages/admin/admin"));
 const Header = lazy(() => import("./component/header"));
@@ -11,9 +11,21 @@ const Login = lazy(() => import("./component/Login"));
 const Signup = lazy(() => import("./component/Signup"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 import Loading from "./component/Loading";
+import { getCurrentUser } from "./api/userApi";
+import { useDispatch } from "react-redux";
+import { login, logout } from "./features/authSlice";
 function App() {
   const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    getCurrentUser().then((user) => {
+      if (user.data.success) {
+        const userData = user.data.data.user;
+        dispatch(login({ userData }));
+      } else dispatch(logout());
+    });
+  }, []);
   return (
     <div className="">
       <Header />

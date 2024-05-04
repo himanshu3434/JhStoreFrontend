@@ -1,20 +1,5 @@
 import { ChangeEvent } from "react";
 
-export interface IProduct extends Document {
-  _id: string;
-  name: string;
-  description: string;
-  stock: number;
-  price: number;
-  category_id: string;
-  coverPhoto: string;
-  photo1: string;
-  photo2: string;
-  photo3: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
 export type filterHandler =
   | ChangeEvent<HTMLSelectElement>
   | ChangeEvent<HTMLInputElement>;
@@ -37,3 +22,38 @@ export interface IProduct extends Document {
 export type productProps = {
   productDetails: IProduct;
 };
+
+export interface Iuser extends Document {
+  _id: string;
+  fullName: string;
+  email: string;
+  role: string;
+  gender: string;
+  address?: string;
+  mobileNumber?: number;
+  pincode?: string;
+  country?: string;
+  state?: string;
+  dob: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  age: number;
+}
+
+export interface ICartItem extends Document {
+  _id: string;
+  product_id: string;
+  user_id: string;
+  quantity: number;
+  createdAt: Date;
+  updatedAt: Date;
+
+  productDetails: {
+    _id: string;
+    name: string;
+    price: number;
+    categoryName: string;
+    coverPhoto: string;
+  };
+  productTotalPrice: number;
+}

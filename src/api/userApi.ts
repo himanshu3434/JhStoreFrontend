@@ -33,4 +33,18 @@ const registerUser = async (data: FieldValues) => {
   return session;
 };
 
-export { loginUser, registerUser };
+const getCurrentUser = async () => {
+  const getCurrentUserUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/user/getCurrentUser`;
+  const options = {
+    method: "GET",
+    url: getCurrentUserUrl,
+  };
+
+  const session = await axios.request(options);
+
+  return session;
+};
+
+export { loginUser, registerUser, getCurrentUser };
