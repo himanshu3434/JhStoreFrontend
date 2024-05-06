@@ -15,8 +15,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       )}
       <input
         type={type}
-        className={`px-3 py-2 rounded-lg bg-slate-200 text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full 
-         focus:border-blue-600 ${className}`}
+        className={`
+          ${className}`}
         ref={ref}
         {...props}
         id={id}

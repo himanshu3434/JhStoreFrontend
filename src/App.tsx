@@ -10,6 +10,7 @@ const Inventory = lazy(() => import("./pages/admin/Inventory"));
 const Login = lazy(() => import("./component/Login"));
 const Signup = lazy(() => import("./component/Signup"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const CheckOut = lazy(() => import("./component/CheckOut"));
 import Loading from "./component/Loading";
 import { getCurrentUser } from "./api/userApi";
 import { useDispatch } from "react-redux";
@@ -39,6 +40,7 @@ function App() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/pay" element={<CheckOut />} />
             <Route path="/products" element={<Products />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/wishList" element={<WishList />} />
