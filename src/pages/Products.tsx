@@ -11,6 +11,7 @@ const Pagination = lazy(() => import("../component/Pagination"));
 function Products() {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+  const [totalPageNumber, setTotalPageNumber] = useState(1);
   const FilterChangeHandler = async (e: filterHandler) => {
     dispatch(
       updateFilter({
@@ -20,12 +21,13 @@ function Products() {
     );
   };
   const filters = useSelector((state: RootState) => state.filter);
-
+  const [page, setPage] = useState(1);
   const getAllProducts = async () => {
     const allProducts = await fetchAllProductsWithFilters(filters);
 
     if (allProducts.data.success) {
       console.log("all products", allProducts.data);
+      setTotalPageNumber(allProducts.data.data.totalPageNumber);
       setProducts(allProducts.data.data.limitedProductList);
     }
   };
@@ -40,8 +42,12 @@ function Products() {
         <Filters />
       </aside>
 
-      <div className="absolute right-5 mt-3 bg-green-300">
-        <select onChange={FilterChangeHandler} id="sort">
+      <div className="absolute right-5 mt-3 ">
+        <select
+          onChange={FilterChangeHandler}
+          id="sort"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
           <option value="asc">Low to High</option>
           <option value="dsc">High To Low</option>
         </select>
@@ -54,9 +60,11 @@ function Products() {
           })}
         </div>
 
-        <div>
-          <Pagination />
-        </div>
+        {totalPageNumber > 1 ? (
+          <div>
+            <Pagination page={page} setPage={setPage} total={totalPageNumber} />
+          </div>
+        ) : null}
       </div>
     </div>
   );

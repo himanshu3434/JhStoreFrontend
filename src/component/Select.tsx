@@ -12,7 +12,12 @@ const Select: React.ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
   return (
     <div className="">
       {label && <label htmlFor={id}></label>}
-      <select className="text-black" id={id} {...props} ref={ref}>
+      <select
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        id={id}
+        {...props}
+        ref={ref}
+      >
         {options?.map((option) => (
           <option key={option} value={option}>
             {option}

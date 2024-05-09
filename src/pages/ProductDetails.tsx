@@ -1,4 +1,9 @@
-import React, { useEffect, useState, MouseEvent } from "react";
+import React, {
+  useEffect,
+  useState,
+  MouseEvent,
+  MouseEventHandler,
+} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchSingleProductUsingId } from "../api/productsApi";
 import Button from "../component/Button";
@@ -7,7 +12,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/Store";
 import { cudToCart } from "../api/cartApi";
 import { Iuser } from "../types/types";
-
+import { LuMinus, LuPlus } from "react-icons/lu";
+import ProductPhotos from "../component/ProductPhotos";
 const initialState = {
   _id: "",
   name: "",
@@ -26,11 +32,22 @@ function ProductDetails() {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState(initialState);
   const [quantity, setQuantity] = useState(1);
+  const [productPhotos, setProductPhotos] = useState(["", "", "", ""]);
   const navigate = useNavigate();
   const userData = useSelector((state: RootState) => state.auth.userData);
   const getProductDetails = async () => {
     const productFetchResponse = await fetchSingleProductUsingId(id as string);
     if (productFetchResponse.data.success) {
+      const productPhoto1Url = productFetchResponse.data.data.photo1;
+      const productPhoto2Url = productFetchResponse.data.data.photo2;
+      const productPhoto3Url = productFetchResponse.data.data.photo3;
+      const productPhoto4Url = productFetchResponse.data.data.coverPhoto;
+      setProductPhotos([
+        productPhoto1Url,
+        productPhoto2Url,
+        productPhoto3Url,
+        productPhoto4Url,
+      ]);
       setProductDetails(productFetchResponse.data.data);
     }
   };
@@ -59,40 +76,81 @@ function ProductDetails() {
       }
     }
   };
+
+  const photoSwapHandler = (e: MouseEvent<HTMLImageElement>) => {
+    let photoIndex: number;
+    const id = e.currentTarget.id;
+    // console.log("in photo handler  id  ", id, "   ");
+    switch (id) {
+      case "productPhoto1":
+        photoIndex = 0;
+        break;
+      case "productPhoto2":
+        photoIndex = 1;
+        break;
+      case "productPhoto3":
+        photoIndex = 2;
+        break;
+      default:
+        photoIndex = 3;
+        break;
+    }
+    const newProductPhotos = [...productPhotos] as string[];
+    [newProductPhotos[photoIndex], newProductPhotos[3]] = [
+      newProductPhotos[3],
+      newProductPhotos[photoIndex],
+    ];
+    setProductPhotos(newProductPhotos);
+  };
   useEffect(() => {
     getProductDetails();
   }, []);
   return (
     <div>
-      <div className="text-center text-3xl">Product Detail</div>
+      <div className="text-center text-3xl font-bold my-4">Product Detail</div>
       <div className="flex mt-5">
-        <div className="w-[30vw]">
-          <img src={productDetails.coverPhoto} alt="" />
-        </div>
+        <ProductPhotos
+          productPhotos={productPhotos}
+          photoSwapHandler={photoSwapHandler}
+        />
+        <div>
+          <div className="space-y-4">
+            <div className="font-semibold text-2xl">{productDetails.name}</div>
 
-        <div className="space-y-4">
-          <div>{productDetails.name}</div>
+            <div className="">{productDetails.description}</div>
 
-          <div>{productDetails.description}</div>
-
-          <div>₹{productDetails.price}</div>
-          <div>
-            <div className=" font-bold">Quantity : </div>
-            <div className="">
+            <div className="flex gap-2 items-center ">
+              <div className="text-2xl">
+                <span className="text-3xl ">₹</span>
+                {productDetails.price}
+              </div>
+              <div className="text-md line-through text-red-500 ">
+                ₹
+                {Number(productDetails.price) +
+                  Number(productDetails.price) / 2}
+              </div>
+              <div className=" text-md   bg-teal-300 text-white px-2 py-1 rounded-lg">
+                Save 50%
+              </div>
+            </div>
+            <div className="flex space-x-4">
+              <div className=" flex space-x-5 w-[10vw] justify-center items-center  bg-slate-200  rounded-md px-2 py-1 shadow-sm">
+                <Button className="  " id="substract" onClick={quantityHandler}>
+                  <LuMinus />
+                </Button>
+                <div className="">{quantity}</div>
+                <Button className="  " id="add" onClick={quantityHandler}>
+                  <LuPlus />
+                </Button>
+              </div>
               <Button
-                className=" w-10 "
-                id="substract"
-                onClick={quantityHandler}
+                onClick={addToCartHandler}
+                className="flex-1 bg-sky-500 text-white rounded-lg py-2 hover:bg-sky-300 shadow-md"
               >
-                -
-              </Button>
-              <div className="ml-4">{quantity}</div>
-              <Button className=" w-10 " id="add" onClick={quantityHandler}>
-                +
+                Add To Cart
               </Button>
             </div>
           </div>
-          <Button onClick={addToCartHandler}>Add To Cart</Button>
         </div>
       </div>
     </div>

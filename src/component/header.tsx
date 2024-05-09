@@ -13,18 +13,27 @@ import Input from "./Input";
 import { FieldValues, useForm } from "react-hook-form";
 import Button from "./Button";
 import { TbLogin } from "react-icons/tb";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateFilter } from "../features/filterSlice";
+import { RootState } from "../store/Store";
+import { Iuser } from "../types/types";
+import useLogout from "../hooks/useLogout";
+
 function Header() {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
-
+  const logout = useLogout();
   //this is for mobile navbar currently not used
   const searchFilterHandler = (data: FieldValues) => {
     data = data.search;
     dispatch(updateFilter({ data, id: "search" }));
   };
-
+  const userData = useSelector(
+    (state: RootState) => state.auth.userData
+  ) as Iuser | null;
+  const handlerLogout = async () => {
+    await logout();
+  };
   useEffect(() => {
     const searchTimeout = setTimeout(() => {
       const data = search;
@@ -39,30 +48,39 @@ function Header() {
   const ProfileHover = (
     <div>
       <div className=" bg-white shadow-md p-4 ">
-        <Link to="/admin">
-          <div className="flex  items-center my-2 space-x-2">
-            <GrUserAdmin />
-            <div>Admin Panel</div>
-          </div>
-        </Link>
-        <Link to="/admin">
-          <div className="flex items-center  my-2 space-x-2">
-            <FiEdit2 />
-            <div>Edit Profile</div>
-          </div>
-        </Link>
-        <Link to="/admin">
-          <div className="flex   items-center   my-2 space-x-2">
+        {userData && userData.role === "admin" ? (
+          <Link to="/admin">
+            <div className="flex  items-center my-2 space-x-2">
+              <GrUserAdmin />
+              <div>Admin Panel</div>
+            </div>
+          </Link>
+        ) : null}
+        {userData && (
+          <Link to="/admin">
+            <div className="flex items-center  my-2 space-x-2">
+              <FiEdit2 />
+              <div>Edit Profile</div>
+            </div>
+          </Link>
+        )}
+        {userData && (
+          <div
+            className="flex   items-center   my-2 space-x-2"
+            onClick={handlerLogout}
+          >
             <GrLogout />
             <div>Logout</div>
           </div>
-        </Link>
-        <Link to="/admin">
-          <div className="flex   items-center   my-2 space-x-2">
-            <TbLogin size={20} />
-            <div>Login</div>
-          </div>
-        </Link>
+        )}
+        {userData === null ? (
+          <Link to="/login">
+            <div className="flex   items-center   my-2 space-x-2">
+              <TbLogin size={20} />
+              <div>Login</div>
+            </div>
+          </Link>
+        ) : null}
       </div>
     </div>
   );
@@ -98,23 +116,18 @@ function Header() {
                 Products
               </p>
             </div>{" "}
-          </Link>
-
-          <Link to="/admin">
-            {" "}
-            <div className="group   hover:border-b-2 border-pink-500 ">
-              <div className=" flex justify-center  text-gray-500 group-hover:text-pink-500">
-                <FaRegUser size={20} />
-              </div>
-              <p className=" text-[.7rem] leading-2 font-semibold    group-hover:text-pink-500">
-                Profile
-              </p>
-              <div className="invisible absolute group-hover:visible  pt-5 right-20 z-30  ">
-                {ProfileHover}
-              </div>
-            </div>{" "}
-          </Link>
-
+          </Link>{" "}
+          <div className="group   hover:border-b-2 border-pink-500  cursor-pointer ">
+            <div className=" flex justify-center  text-gray-500 group-hover:text-pink-500">
+              <FaRegUser size={20} />
+            </div>
+            <p className=" text-[.7rem] leading-2 font-semibold    group-hover:text-pink-500">
+              Profile
+            </p>
+            <div className="invisible absolute group-hover:visible  pt-5 right-20 z-30  ">
+              {ProfileHover}
+            </div>
+          </div>{" "}
           <Link to="/cart">
             {" "}
             <div className="group   hover:border-b-2 border-cyan-500">

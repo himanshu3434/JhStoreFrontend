@@ -44,20 +44,21 @@ function Filters() {
     navigate("/products");
   };
   return (
-    <div className="h-screen bg-blue-400 w-[17vw] ">
-      <div>
-        <h1>Filters</h1>
+    <div className="h-screen w-[19vw] mt-5  px-2 ">
+      <div className="font-bold text-2xl text-center">
+        <h1>Filter</h1>
       </div>
 
       <hr className="my-5" />
 
-      <div>Categories</div>
+      <div className="font-bold  text-xl text-center mb-4">Categories</div>
       <select
-        className="text-black"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         id="category"
         defaultValue={currentFilters.category}
         onChange={FilterChangeHandler}
       >
+        <option value="">None</option>
         {categories?.map((option) => (
           <option key={option} value={option}>
             {option}
@@ -65,16 +66,17 @@ function Filters() {
         ))}
       </select>
 
-      <hr className="my-7" />
+      <hr className="my-3" />
 
       <div className="space-y-2">
-        <div>Customer Review</div>
+        <div className="font-bold  text-xl text-center mb-4">Rating</div>
 
         <select
-          className="text-black"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           id="review"
           onChange={FilterChangeHandler}
         >
+          <option value="">None</option>
           <option value="4">⭐⭐⭐⭐ &up</option>
           <option value="3">⭐⭐⭐ &up</option>
           <option value="2">⭐⭐ &up</option>
@@ -83,24 +85,29 @@ function Filters() {
 
         <br />
       </div>
-      <hr className="py-5" />
+      <hr className="py-3" />
 
       <div>
-        <div>Price Range</div>
+        <div className="font-bold  text-xl text-center ">Price Range</div>
         <form onSubmit={handleSubmit(priceFilterChangeHandler)}>
-          <Input
-            label="Min Price :"
-            placeholder="Minimum Price"
-            className=" bg-gray-200"
-            {...register("minPrice", { required: true })}
-          />
-          <Input
-            label="Max Price :"
-            placeholder="Maximum Price"
-            className=" bg-gray-200"
-            {...register("maxPrice", { required: true })}
-          />
-          <Button type="submit" className="w-full">
+          <div className="flex">
+            <Input
+              label="Min Price :"
+              placeholder="Min"
+              className=" w-[8vw] bg-gray-300  placeholder-slate-400 rounded-lg px-3 py-2"
+              {...register("minPrice", { required: true })}
+            />
+            <Input
+              label="Max Price :"
+              placeholder="Max"
+              className=" w-[8vw] bg-gray-300  placeholder-slate-400 rounded-lg px-3 py-2"
+              {...register("maxPrice", { required: true })}
+            />
+          </div>
+          <Button
+            type="submit"
+            className="w-full bg-sky-500 text-white rounded-lg p-2 mt-3"
+          >
             Go
           </Button>
         </form>

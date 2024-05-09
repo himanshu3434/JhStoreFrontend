@@ -47,4 +47,16 @@ const getCurrentUser = async () => {
   return session;
 };
 
-export { loginUser, registerUser, getCurrentUser };
+const logoutUserApi = async () => {
+  const logoutUserUrl = `${import.meta.env.VITE_SERVER_URL}/user/logout`;
+  const options = {
+    method: "POST",
+    url: logoutUserUrl,
+  };
+
+  const logoutUserResponse = await axios.request(options);
+
+  return logoutUserResponse;
+};
+
+export { loginUser, registerUser, getCurrentUser, logoutUserApi };
