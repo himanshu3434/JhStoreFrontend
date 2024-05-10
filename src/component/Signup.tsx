@@ -37,8 +37,8 @@ function Signup() {
 
   return (
     <div>
-      <div className="w-[350px] h-[450px] rounded-xl p-5 mt-10 mb-10 ml-auto mr-auto bg-gray-500 text-white">
-        <div className="text-3xl mb-4 text-center text-bold">
+      <div className="w-[350px] h-[450px] rounded-xl p-5 mt-10 mb-10 ml-auto mr-auto bg-blue-300 text-white">
+        <div className="text-3xl mb-4 text-center font-bold">
           <h1>Sign up </h1>
         </div>
 
@@ -47,7 +47,7 @@ function Signup() {
           <form onSubmit={handleSubmit(signup)}>
             <div>
               <Input
-                label="Full Name "
+                className="rounded-lg py-2 px-3 w-full"
                 placeholder="Enter your Full Name"
                 {...register("fullName", {
                   required: true,
@@ -55,8 +55,8 @@ function Signup() {
               />
 
               <Input
-                label="Email "
                 type="email"
+                className="rounded-lg py-2 px-3 w-full mt-2"
                 placeholder="Enter your Email address"
                 {...register("email", {
                   required: true,
@@ -69,8 +69,8 @@ function Signup() {
                 })}
               ></Input>
               <Input
-                label="Password "
                 type="password"
+                className="rounded-lg py-2 px-3 w-full mt-2 mb-2"
                 placeholder="Enter your Password "
                 {...register("password", {
                   required: true,
@@ -80,19 +80,24 @@ function Signup() {
               <Select
                 options={["Male", "Female", "Other"]}
                 label="Gender"
-                {...register("gender", { required: true })}
                 className=""
+                {...register("gender", { required: true })}
               />
               <Input
-                label="DOB "
                 type="date"
+                className="rounded-lg py-2 px-3 w-full mt-2 text-black"
                 placeholder="enter you Date"
                 {...register("dob", {
                   required: true,
                 })}
               ></Input>
 
-              <Button type="submit">Create Account</Button>
+              <Button
+                type="submit"
+                className="bg-sky-500 w-full py-2  mt-2 rounded-lg "
+              >
+                Create Account
+              </Button>
             </div>
           </form>
         </div>

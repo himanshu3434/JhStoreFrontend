@@ -51,6 +51,7 @@ export interface ICartItem extends Document {
   productDetails: {
     _id: string;
     name: string;
+    stock: number;
     price: number;
     categoryName: string;
     coverPhoto: string;

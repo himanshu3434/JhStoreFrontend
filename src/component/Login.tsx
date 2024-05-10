@@ -33,8 +33,8 @@ function Login() {
 
   return (
     <div className="">
-      <div className=" w-[350px] h-[400px] rounded-xl p-5 mt-10 mb-10 ml-auto mr-auto bg-gray-500 text-white">
-        <div className="text-3xl mb-4 text-center text-bold ">
+      <div className=" w-[350px] h-[400px] rounded-xl p-5 mt-10 mb-10 ml-auto mr-auto bg-blue-300 text-white">
+        <div className="text-3xl mb-4 text-center font-bold ">
           <h1 className="">Sign in</h1>
         </div>
         <div>
@@ -45,6 +45,7 @@ function Login() {
                 <Input
                   label="Email "
                   type="email"
+                  className="rounded-lg py-2 px-3 w-full "
                   placeholder="Enter your Email address"
                   {...register("email", {
                     required: true,
@@ -59,13 +60,19 @@ function Login() {
                 <Input
                   label="Password "
                   type="password"
-                  placeholder="Enter your Password address"
+                  className="rounded-lg py-2 px-3 w-full text-black"
+                  placeholder="Enter your Password "
                   {...register("password", {
                     required: true,
                   })}
                 ></Input>
 
-                <Button type="submit">Log In</Button>
+                <Button
+                  type="submit"
+                  className="bg-sky-500 w-full mt-5 py-2 rounded-lg"
+                >
+                  Log In
+                </Button>
               </div>
             </form>
           </div>

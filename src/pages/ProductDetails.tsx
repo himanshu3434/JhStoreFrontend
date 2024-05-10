@@ -10,7 +10,7 @@ import Button from "../component/Button";
 import Input from "../component/Input";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/Store";
-import { cudToCart } from "../api/cartApi";
+import { cudToCart, getCartItemQuantity } from "../api/cartApi";
 import { Iuser } from "../types/types";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import ProductPhotos from "../component/ProductPhotos";
@@ -33,9 +33,10 @@ function ProductDetails() {
   const [productDetails, setProductDetails] = useState(initialState);
   const [quantity, setQuantity] = useState(1);
   const [productPhotos, setProductPhotos] = useState(["", "", "", ""]);
+  const [cartQuantity, setCartQuantity] = useState(0);
   const navigate = useNavigate();
   const userData = useSelector((state: RootState) => state.auth.userData);
-  const getProductDetails = async () => {
+  const getProductAndCartQuantityDetails = async () => {
     const productFetchResponse = await fetchSingleProductUsingId(id as string);
     if (productFetchResponse.data.success) {
       const productPhoto1Url = productFetchResponse.data.data.photo1;
@@ -49,6 +50,13 @@ function ProductDetails() {
         productPhoto4Url,
       ]);
       setProductDetails(productFetchResponse.data.data);
+      const quantityFetchResponse = await getCartItemQuantity(
+        (userData as Iuser | null)?._id || "",
+        productFetchResponse.data.data._id
+      );
+      if (quantityFetchResponse.data.success) {
+        setCartQuantity(quantityFetchResponse.data.data);
+      }
     }
   };
   const addToCartHandler = async () => {
@@ -58,6 +66,7 @@ function ProductDetails() {
       product_id: productDetails._id,
       quantity: quantity,
     };
+    console.log("request data in product dtails ", data);
     const addToCartResponse = await cudToCart(data);
 
     if (addToCartResponse.data.success) {
@@ -71,7 +80,8 @@ function ProductDetails() {
         setQuantity((prev) => prev - 1);
       }
     } else {
-      if (quantity < Number(productDetails.stock) - 1) {
+      console.log(cartQuantity);
+      if (quantity < Number(productDetails.stock) - cartQuantity) {
         setQuantity((prev) => prev + 1);
       }
     }
@@ -103,7 +113,7 @@ function ProductDetails() {
     setProductPhotos(newProductPhotos);
   };
   useEffect(() => {
-    getProductDetails();
+    getProductAndCartQuantityDetails();
   }, []);
   return (
     <div>
@@ -133,22 +143,41 @@ function ProductDetails() {
                 Save 50%
               </div>
             </div>
-            <div className="flex space-x-4">
-              <div className=" flex space-x-5 w-[10vw] justify-center items-center  bg-slate-200  rounded-md px-2 py-1 shadow-sm">
-                <Button className="  " id="substract" onClick={quantityHandler}>
-                  <LuMinus />
-                </Button>
-                <div className="">{quantity}</div>
-                <Button className="  " id="add" onClick={quantityHandler}>
-                  <LuPlus />
+            <div>
+              <div className="flex ">
+                <div
+                  className={`absolute z-10 bg-red-700   py-3  flex items-center w-[46vw] justify-center  text-xl font-bold text-white ${
+                    Number(productDetails.stock) - cartQuantity === 0
+                      ? "visible"
+                      : "invisible"
+                  } `}
+                >
+                  No More Stock Go to Cart
+                </div>
+                <div
+                  className={
+                    " relative flex space-x-5 w-[10vw] justify-center items-center  bg-slate-200  rounded-md px-2 py-1 shadow-sm mr-4"
+                  }
+                >
+                  <Button
+                    className="  "
+                    id="substract"
+                    onClick={quantityHandler}
+                  >
+                    <LuMinus />
+                  </Button>
+                  <div className="">{quantity}</div>
+                  <Button className="  " id="add" onClick={quantityHandler}>
+                    <LuPlus />
+                  </Button>
+                </div>
+                <Button
+                  onClick={addToCartHandler}
+                  className="flex-1 bg-sky-500 text-white rounded-lg py-2 hover:bg-sky-300 shadow-md"
+                >
+                  Add To Cart
                 </Button>
               </div>
-              <Button
-                onClick={addToCartHandler}
-                className="flex-1 bg-sky-500 text-white rounded-lg py-2 hover:bg-sky-300 shadow-md"
-              >
-                Add To Cart
-              </Button>
             </div>
           </div>
         </div>
