@@ -14,8 +14,9 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import Button from "./Button";
+import { orderCreate } from "../api/orderApi";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
-function CheckOutForm({ allCartItems }: any) {
+function CheckOutForm({ allCartItems, discount }: any) {
   const stripe = useStripe();
   const elements = useElements();
   console.log(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -35,8 +36,19 @@ function CheckOutForm({ allCartItems }: any) {
     if (error) console.log("error  ", error);
     else {
       console.log("payment intent   ", paymentIntent);
-      if (paymentIntent.status === "succeeded")
-        console.log("yes we have done it ");
+      if (paymentIntent.status === "succeeded") {
+        let subTotal = paymentIntent.amount / 100;
+        let transaction_id = paymentIntent.payment_method;
+
+        const orderCreateResponse = await orderCreate(
+          allCartItems,
+          discount,
+          subTotal,
+          transaction_id
+        );
+
+        console.log("order created success ", orderCreateResponse);
+      }
     }
   };
 
@@ -54,11 +66,11 @@ function CheckOutForm({ allCartItems }: any) {
 
 function CheckOut() {
   const location = useLocation();
-  const { allCartItems, subTotal } = location.state;
+  const { allCartItems, subTotal, discount } = location.state;
   const [clientSecret, setClientSecret] = useState(undefined);
 
   useEffect(() => {
-    createPaymentIntent(subTotal).then((response) => {
+    createPaymentIntent((subTotal - discount) * 100).then((response) => {
       if (response.data.success) {
         setClientSecret(response.data.data.clientSecret);
       }
@@ -68,7 +80,7 @@ function CheckOut() {
   return clientSecret === undefined ? null : (
     <div>
       <Elements stripe={stripePromise} options={{ clientSecret }}>
-        <CheckOutForm allCartItems={allCartItems} />
+        <CheckOutForm allCartItems={allCartItems} discount={discount} />
       </Elements>
     </div>
   );

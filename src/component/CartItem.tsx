@@ -6,12 +6,18 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/Store";
 import { ICartItem, Iuser } from "../types/types";
 import { RxCross2 } from "react-icons/rx";
+import { set } from "react-hook-form";
 
 type cartItemWithDelete = {
   cartItem: ICartItem;
   setDeleteCartItem: React.Dispatch<React.SetStateAction<(string | number)[]>>;
+  setSubTotal: React.Dispatch<React.SetStateAction<number>>;
 };
-function CartItem({ cartItem, setDeleteCartItem }: cartItemWithDelete) {
+function CartItem({
+  cartItem,
+  setDeleteCartItem,
+  setSubTotal,
+}: cartItemWithDelete) {
   const userData = useSelector((state: RootState) => state.auth.userData);
 
   const [cartItemQuantity, setCarItemQuantity] = useState(cartItem.quantity);
@@ -31,7 +37,7 @@ function CartItem({ cartItem, setDeleteCartItem }: cartItemWithDelete) {
         setDeleteCartItem(newDeleteItem);
       } else {
         await cudToCart(data);
-
+        setSubTotal((prev) => prev - cartItem.productDetails.price);
         setCarItemQuantity((prev) => prev - 1);
       }
     } else {
@@ -39,6 +45,7 @@ function CartItem({ cartItem, setDeleteCartItem }: cartItemWithDelete) {
         //  console.log("in addd ", data, "  ");
         data.quantity = 1;
         await cudToCart(data);
+        setSubTotal((prev) => prev + cartItem.productDetails.price);
         setCarItemQuantity((prev) => prev + 1);
       }
     }
