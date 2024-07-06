@@ -3,7 +3,7 @@ import { IoSearchOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
-import { FaRegUser } from "react-icons/fa";
+import { FaBorderAll, FaRegAddressCard, FaRegUser } from "react-icons/fa";
 import { FiArchive } from "react-icons/fi";
 import { FiShoppingCart } from "react-icons/fi";
 import { GrLogin } from "react-icons/gr";
@@ -18,6 +18,7 @@ import { updateFilter } from "../features/filterSlice";
 import { RootState } from "../store/Store";
 import { Iuser } from "../types/types";
 import useLogout from "../hooks/useLogout";
+import { GoChecklist } from "react-icons/go";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -57,13 +58,30 @@ function Header() {
           </Link>
         ) : null}
         {userData && (
-          <Link to="/admin">
+          <Link to="/profile">
             <div className="flex items-center  my-2 space-x-2">
               <FiEdit2 />
               <div>Edit Profile</div>
             </div>
           </Link>
         )}
+        {userData && (
+          <Link to="/orders">
+            <div className="flex items-center  my-2 space-x-2">
+              <GoChecklist />
+              <div>Orders</div>
+            </div>
+          </Link>
+        )}
+        {userData && (
+          <Link to="/address">
+            <div className="flex items-center  my-2 space-x-2">
+              <FaRegAddressCard />
+              <div>Address</div>
+            </div>
+          </Link>
+        )}
+
         {userData && (
           <div
             className="flex   items-center   my-2 space-x-2"

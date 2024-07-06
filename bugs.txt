@@ -1,2 +1,7 @@
 1- cart data is old and not refreshed in cart page when we increase the item on cart page fix it 
 possible solution (cart store )
+
+2- fix ui of bill detail 
+
+3- fix name and description while creating payment intent 
+

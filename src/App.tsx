@@ -11,6 +11,9 @@ const Login = lazy(() => import("./component/Login"));
 const Signup = lazy(() => import("./component/Signup"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 const CheckOut = lazy(() => import("./component/CheckOut"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Order = lazy(() => import("./pages/Order"));
+const Address = lazy(() => import("./pages/Address"));
 import Loading from "./component/Loading";
 import { getCurrentUser } from "./api/userApi";
 import { useDispatch } from "react-redux";
@@ -38,6 +41,9 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/admin" element={<Admin />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/orders" element={<Order />} />
+            <Route path="/address" element={<Address />} />
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/pay" element={<CheckOut />} />

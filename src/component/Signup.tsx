@@ -18,14 +18,13 @@ function Signup() {
     setError("");
     try {
       const session = await registerUser(data);
-      console.log("session register ", session);
+
       if (session.data.success) {
-        console.log("data signup ", data);
         const userLogin = await loginUser(data);
-        console.log("userLogin register ", userLogin);
+
         if (userLogin.data.success) {
           const userData = userLogin.data.data;
-          console.log("userData register ", userData);
+
           dispatch(storeLogin({ userData }));
         }
         navigate("/");
