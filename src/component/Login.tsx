@@ -45,7 +45,7 @@ function Login() {
                 <Input
                   label="Email "
                   type="email"
-                  className="rounded-lg py-2 px-3 w-full "
+                  className="rounded-lg py-2 px-3 w-full text-black "
                   placeholder="Enter your Email address"
                   {...register("email", {
                     required: true,

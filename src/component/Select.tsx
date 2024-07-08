@@ -11,7 +11,14 @@ const Select: React.ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
   const id = useId();
   return (
     <div className="">
-      {label && <label htmlFor={id}></label>}
+      {label && (
+        <label
+          htmlFor={id}
+          className="inline-block text-gray-400  pl-1 mt-2 text-sm"
+        >
+          {label}
+        </label>
+      )}
       <select
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         id={id}

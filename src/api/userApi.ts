@@ -59,4 +59,28 @@ const logoutUserApi = async () => {
   return logoutUserResponse;
 };
 
-export { loginUser, registerUser, getCurrentUser, logoutUserApi };
+const updateProfile = async (data: FieldValues) => {
+  const updateProfileUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/user/updateDetails`;
+  const createOptions = {
+    method: "POST",
+    url: updateProfileUrl,
+
+    data: {
+      ...data,
+    },
+  };
+
+  const updateResponse = await axios.request(createOptions);
+
+  return updateResponse;
+};
+
+export {
+  loginUser,
+  registerUser,
+  getCurrentUser,
+  logoutUserApi,
+  updateProfile,
+};
