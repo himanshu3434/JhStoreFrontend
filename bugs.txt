@@ -5,3 +5,5 @@ possible solution (cart store )
 
 3- fix name and description while creating payment intent 
 
+
+4- create a page for password reset
