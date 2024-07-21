@@ -29,3 +29,17 @@ export const orderCreate = async (
 
   return getOrderCreateResponse;
 };
+
+export const getAllUserOrders = async () => {
+  const getAllUserOrdersUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/order/allOrder`;
+
+  const options = {
+    method: "GET",
+    url: getAllUserOrdersUrl,
+  };
+  const getAllUserOrdersResponse = await axios.request(options);
+
+  return getAllUserOrdersResponse;
+};

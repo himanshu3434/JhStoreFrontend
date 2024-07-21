@@ -58,3 +58,15 @@ export interface ICartItem extends Document {
   };
   productTotalPrice: number;
 }
+export interface IOrder extends Document {
+  _id: string;
+  transaction_id: string;
+  status: string;
+  payment_mode: string;
+  user_id: string;
+  orderAmount: number;
+  discount: number;
+  shippingCharge?: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
