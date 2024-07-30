@@ -10,3 +10,5 @@ possible solution (cart store )
 
 
 5- add items in order of user (optional )
+
+6 -when going from home page category to product category not showing in filter it is applied but not showing 

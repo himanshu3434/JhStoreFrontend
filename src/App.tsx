@@ -14,6 +14,11 @@ const CheckOut = lazy(() => import("./component/CheckOut"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Order = lazy(() => import("./pages/Order"));
 const Address = lazy(() => import("./pages/Address"));
+const AllOrders = lazy(() => import("./pages/admin/AllOrders"));
+
+const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
+const User = lazy(() => import("./pages/admin/User"));
+
 import Loading from "./component/Loading";
 import { getCurrentUser } from "./api/userApi";
 import { useDispatch } from "react-redux";
@@ -44,7 +49,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/orders" element={<Order />} />
             <Route path="/address" element={<Address />} />
-            <Route path="/" element={<Home />} />
+
             <Route path="/cart" element={<Cart />} />
             <Route path="/pay" element={<CheckOut />} />
             <Route path="/products" element={<Products />} />
@@ -52,9 +57,18 @@ function App() {
             <Route path="/wishList" element={<WishList />} />
           </Routes>
           <Routes>
-            <Route path="/admin/inventory" element={<Inventory />}></Route>
+            <Route path="/admin/inventory" element={<Inventory />} />
+            <Route path="/admin/orders" element={<AllOrders />} />
+
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/users" element={<User />} />
           </Routes>
         </Suspense>
+      </div>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </div>
     </div>
   );

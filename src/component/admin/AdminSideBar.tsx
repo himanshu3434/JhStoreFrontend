@@ -13,16 +13,7 @@ function AdminSideBar() {
 
       <div className=" ">
         <ul className="flex-col items-center justify-center space-y-3 ">
-          <AdminSideBarItems
-            Icon={LuLayoutDashboard}
-            name="DashBoard"
-            to="/admin/dashboard"
-          />
-          <AdminSideBarItems
-            Icon={VscGraph}
-            name="Statistics"
-            to="/admin/statistics"
-          />
+         
           <AdminSideBarItems
             Icon={FaRegUserCircle}
             name="Users"

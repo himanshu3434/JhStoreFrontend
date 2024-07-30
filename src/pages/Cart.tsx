@@ -45,15 +45,20 @@ function Cart() {
   }, [deleteCartItem]);
   useEffect(() => {
     const checkCouponTimeout = setTimeout(async () => {
-      const couponCheckResponse = await checkCoupon(coupon);
-      if (
-        couponCheckResponse.data.success &&
-        couponCheckResponse.data.data.valid
-      ) {
-        setValidCouponId(couponCheckResponse.data.data.dbCoupon._id);
-        setDiscount(couponCheckResponse.data.data.dbCoupon.amount);
+      if (coupon !== "") {
+        const couponCheckResponse = await checkCoupon(coupon);
+        if (
+          couponCheckResponse.data.success &&
+          couponCheckResponse.data.data.valid
+        ) {
+          setValidCouponId(couponCheckResponse.data.data.dbCoupon._id);
+          setDiscount(couponCheckResponse.data.data.dbCoupon.amount);
+        } else {
+          console.log("invalid coupon");
+          setValidCouponId("");
+          setDiscount(0);
+        }
       } else {
-        console.log("invalid coupon");
         setValidCouponId("");
         setDiscount(0);
       }
@@ -99,30 +104,36 @@ function Cart() {
             <span>Total: </span>₹ {subTotal - discount}
           </div>
 
-          <div>
-            <Input
-              label="Add Coupon :"
-              type="text"
-              className={
-                validCouponId === ""
-                  ? "bg-white text-black"
-                  : "bg-green-200 text-black"
-              }
-              placeholder="Enter Coupon Code"
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setCoupon(e.target.value)
-              }
-            />
-          </div>
-          <Button
-            type="button"
-            className="bg-sky-500 text-white py-2 px-4 rounded-lg mt-4"
-            onClick={() =>
-              navigate("/pay", { state: { allCartItems, subTotal, discount } })
-            }
-          >
-            Checkout
-          </Button>
+          {subTotal > 0 && (
+            <div>
+              <div>
+                <Input
+                  label="Add Coupon :"
+                  type="text"
+                  className={
+                    validCouponId === ""
+                      ? "bg-white text-black   "
+                      : "bg-green-200 text-black "
+                  }
+                  placeholder="Enter Coupon Code"
+                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                    setCoupon(e.target.value)
+                  }
+                />
+              </div>
+              <Button
+                type="button"
+                className="bg-sky-500 text-white py-2 px-4 rounded-lg mt-4"
+                onClick={() =>
+                  navigate("/pay", {
+                    state: { allCartItems, subTotal, discount },
+                  })
+                }
+              >
+                Checkout
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
