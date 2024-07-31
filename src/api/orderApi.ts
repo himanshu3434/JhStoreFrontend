@@ -43,3 +43,17 @@ export const getAllUserOrders = async () => {
 
   return getAllUserOrdersResponse;
 };
+
+export const fetchAllOrders = async (page: number) => {
+  const fetchAllOrdersUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/order/allOrderAdmin/${page}`;
+
+  const options = {
+    method: "GET",
+    url: fetchAllOrdersUrl,
+  };
+  const getAllOrdersResponse = await axios.request(options);
+
+  return getAllOrdersResponse;
+};

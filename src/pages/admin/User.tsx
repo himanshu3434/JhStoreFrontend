@@ -53,6 +53,7 @@ function User() {
 
                     <td>{data.gender}</td>
                     <td>{data.role.toUpperCase()}</td>
+                    <td></td>
                   </tr>
                 );
               })}

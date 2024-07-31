@@ -70,3 +70,17 @@ export interface IOrder extends Document {
   createdAt: Date;
   updatedAt: Date;
 }
+export interface IOrderAndOrderItems extends Document {
+  _id: string;
+  transaction_id: string;
+  status: string;
+  payment_mode: string;
+  user_id: string;
+  orderAmount: number;
+  discount: number;
+  shippingCharge?: number;
+  fullName: string;
+  quantity: number;
+  createdAt: Date;
+  updatedAt: Date;
+}

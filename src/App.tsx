@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-const Admin = lazy(() => import("./pages/admin/admin"));
+
 const Header = lazy(() => import("./component/header"));
 const Home = lazy(() => import("./pages/Home"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -38,14 +38,14 @@ function App() {
   return (
     <div className="">
       <Header />
-      <div className="px-2 md:px-10">
+      <div className="px-2 md:px-5">
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
           <Routes>
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin" element={<User />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/orders" element={<Order />} />
             <Route path="/address" element={<Address />} />

@@ -46,13 +46,13 @@ function Inventory() {
               className="cursor-pointer hover:text-white"
               onClick={handlerCategory}
             >
-              New Category
+              Category
             </div>
             <div
               className="cursore-pointer hover:text-white"
               onClick={handlerProduct}
             >
-              New Product
+              Product
             </div>
           </div>
           <FaPlus color="white" />
@@ -107,6 +107,7 @@ function Inventory() {
 
                     <td>{data.price}</td>
                     <td>{data.categoryName}</td>
+                    <td></td>
                   </tr>
                 );
               })}
