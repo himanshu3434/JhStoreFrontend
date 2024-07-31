@@ -38,3 +38,18 @@ export const fetchSingleProductUsingId = async (id: string) => {
 
   return session;
 };
+
+export const getAllProducts = async (page: number) => {
+  const getAllProductUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/product/all/${page}`;
+
+  const createOptions = {
+    method: "GET",
+    url: getAllProductUrl,
+  };
+
+  const getAllProductResponse = await axios.request(createOptions);
+
+  return getAllProductResponse;
+};

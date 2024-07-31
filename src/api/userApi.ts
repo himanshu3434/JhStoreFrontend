@@ -76,6 +76,19 @@ const updateProfile = async (data: FieldValues) => {
 
   return updateResponse;
 };
+const fetchAllUsers = async (page: number) => {
+  const getAllUsersUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/user/allUser/${page}`;
+  const options = {
+    method: "GET",
+    url: getAllUsersUrl,
+  };
+
+  const allUsers = await axios.request(options);
+
+  return allUsers;
+};
 
 export {
   loginUser,
@@ -83,4 +96,5 @@ export {
   getCurrentUser,
   logoutUserApi,
   updateProfile,
+  fetchAllUsers,
 };
