@@ -30,7 +30,6 @@ function User() {
 
               <th className="">Gender</th>
               <th className="">Role</th>
-              <th className="">Action</th>
             </tr>
           </thead>
           <tbody className="text-black">
@@ -53,7 +52,6 @@ function User() {
 
                     <td>{data.gender}</td>
                     <td>{data.role.toUpperCase()}</td>
-                    <td></td>
                   </tr>
                 );
               })}

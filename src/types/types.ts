@@ -84,3 +84,7 @@ export interface IOrderAndOrderItems extends Document {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export type dataType = {
+  data: IProduct;
+};

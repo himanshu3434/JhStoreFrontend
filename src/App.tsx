@@ -17,6 +17,7 @@ const Address = lazy(() => import("./pages/Address"));
 const AllOrders = lazy(() => import("./pages/admin/AllOrders"));
 
 const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
+const UpdateProduct = lazy(() => import("./pages/admin/UpdateProduct"));
 const User = lazy(() => import("./pages/admin/User"));
 
 import Loading from "./component/Loading";
@@ -62,6 +63,7 @@ function App() {
 
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/users" element={<User />} />
+            <Route path="/admin/updateProduct" element={<UpdateProduct />} />
           </Routes>
         </Suspense>
       </div>

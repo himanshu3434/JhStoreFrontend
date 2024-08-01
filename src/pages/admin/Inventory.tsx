@@ -6,12 +6,15 @@ import { DiVim } from "react-icons/di";
 import { IProduct } from "../../types/types";
 import { getAllCartItems } from "../../api/cartApi";
 import { getAllProducts } from "../../api/productsApi";
+import Button from "../../component/Button";
+import { useNavigate } from "react-router-dom";
 const CategoryForm = lazy(() => import("../../component/admin/CategoryForm"));
 const ProductForm = lazy(() => import("../../component/admin/ProductForm"));
 function Inventory() {
   const [isOpen, setIsOpen] = useState(false);
   const [formNo, setFormNo] = useState(0);
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
+  const navigate = useNavigate();
 
   const fetchAllProducts = async () => {
     const getAllProductsResponse = await getAllProducts(1);
@@ -107,7 +110,18 @@ function Inventory() {
 
                     <td>{data.price}</td>
                     <td>{data.categoryName}</td>
-                    <td></td>
+                    <td>
+                      <Button
+                        className=" text-sm text-blue-500 font-bold underline uppercase"
+                        onClick={() =>
+                          navigate("/admin/updateProduct", {
+                            state: { data },
+                          })
+                        }
+                      >
+                        Update
+                      </Button>
+                    </td>
                   </tr>
                 );
               })}
