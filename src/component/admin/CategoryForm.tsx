@@ -15,20 +15,33 @@ function CategoryForm() {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap">
-      <div className="w-2/3 px-2">
-        <Input
-          label="Name :"
-          placeholder="Category Name"
-          className="mb-4  bg-gray-200"
-          {...register("categoryName", { required: true })}
-        />
-
-        <Button type="submit" className="w-full">
-          "Submit"
-        </Button>
+    <div>
+      <div className="font-bold text-xl uppercase text-center py-14">
+        {" "}
+        Add Category
       </div>
-    </form>
+
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-wrap justify-center items-center "
+      >
+        <div className="w-2/3 px-2">
+          <Input
+            label="Name :"
+            placeholder="Category Name"
+            className="rounded-lg py-2 px-3 w-full   placeholder-opacity-65  "
+            {...register("categoryName", { required: true })}
+          />
+
+          <Button
+            type="submit"
+            className="w-full mt-7 bg-sky-500 rounded-lg py-2 text-white hover:bg-sky-400"
+          >
+            Create
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 }
 

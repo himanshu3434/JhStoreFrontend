@@ -7,6 +7,7 @@ import Input from "../Input";
 import Select from "../Select";
 import Button from "../Button";
 import { UpdateProductDetails } from "../../api/adminApi";
+import { useNavigate } from "react-router-dom";
 
 function UpdateProductDetailsForm({ productData }: dataType) {
   const { register, handleSubmit } = useForm({
@@ -19,7 +20,7 @@ function UpdateProductDetailsForm({ productData }: dataType) {
     },
   });
   const [categories, setCategories] = useState<string[]>([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     getAllCategories({ setCategories });
   }, []);
@@ -30,7 +31,7 @@ function UpdateProductDetailsForm({ productData }: dataType) {
       productData._id
     );
     if (updateProductResponse.data.success === true) {
-      console.log("Product Updated", updateProductResponse.data);
+      navigate("/admin/inventory");
     }
   };
 

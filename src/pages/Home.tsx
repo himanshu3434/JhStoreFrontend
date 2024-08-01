@@ -9,7 +9,7 @@ function Home() {
   return (
     <div>
       <div className="absolute inset-0 -z-10">
-        <img src="./public/banner3.jpg" alt="" className=" " />
+        <img src="./banner3.jpg" alt="" className=" " />
         <Link to="/products">
           <div className="absolute right-[10vw] top-[35vh]  bg-[#ffffff] p-2  px-3 rounded-lg text-[#FBAE3A] hover:text-white hover:bg-green-400 text-2xl">
             Shop Now
@@ -59,7 +59,7 @@ function Home() {
           </div>
           <img
             src="
-        ./public/banner6.jpg"
+        ./banner6.jpg"
             alt=""
             className=" h-[50vh]"
           />

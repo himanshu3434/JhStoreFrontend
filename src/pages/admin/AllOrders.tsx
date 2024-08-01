@@ -22,7 +22,7 @@ function AllOrders() {
       </div>
       <div>
         <table className=" table-fixed w-full text-center  border-seperate ">
-          <thead className="text-xl border-b  border-gray-600 h-[9vh]">
+          <thead className="text-lg border-b  border-gray-600 h-[9vh]">
             <tr>
               <th className=""> OrderId</th>
 
@@ -42,8 +42,8 @@ function AllOrders() {
                   <tr
                     className={
                       index % 2 !== 0
-                        ? `bg-[#706666] text-white h-[3em] `
-                        : "h-[3em]"
+                        ? `bg-[#706666] text-white h-[3em] text-sm `
+                        : "h-[3em] text-sm"
                     }
                     key={data._id}
                   >

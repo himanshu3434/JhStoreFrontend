@@ -63,8 +63,8 @@ function Inventory() {
 
         <div>
           {isOpen && (
-            <div className="fixed  inset-0 opacity-75 bg-gray-400   ">
-              <div className="absolute right-[30vw] bottom-[10vh]  w-[40vw] h-[80vh] bg-gray-500">
+            <div className="fixed  inset-0 opacity-90 bg-gray-400   ">
+              <div className="absolute right-[30vw] bottom-[10vh]  w-[40vw] h-[80vh]  bg-yellow-500">
                 <div
                   className="absolute right-2 top-2  cursor-pointer "
                   onClick={toggleOpen}
