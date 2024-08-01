@@ -47,8 +47,8 @@ function UpdateProduct() {
           </div>
         )}
 
-        {choice === 2 && <UpdateProductDetailsForm data={data} />}
-        {choice === 3 && <UpdateProductPhotosForm data={data} />}
+        {choice === 2 && <UpdateProductDetailsForm productData={data} />}
+        {choice === 3 && <UpdateProductPhotosForm productData={data} />}
       </div>
     </div>
   );

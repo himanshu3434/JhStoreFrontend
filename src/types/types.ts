@@ -86,5 +86,9 @@ export interface IOrderAndOrderItems extends Document {
 }
 
 export type dataType = {
-  data: IProduct;
+  productData: IProduct;
+};
+
+export type setCategoriesType = {
+  setCategories: React.Dispatch<React.SetStateAction<string[]>>;
 };

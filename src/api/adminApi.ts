@@ -43,4 +43,26 @@ const createNewProduct = async (data: FieldValues) => {
   return createProductResponse;
 };
 
-export { addCategory, fetchAllCategories, createNewProduct };
+const UpdateProductDetails = async (data: FieldValues, _id: string) => {
+  const updateProductDetailsUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/product/update/${_id}`;
+
+  console.log("adminApi", data);
+  const options = {
+    method: "POST",
+    url: updateProductDetailsUrl,
+
+    data: { ...data },
+  };
+  const updateProductDetailResponse = await axios.request(options);
+
+  return updateProductDetailResponse;
+};
+
+export {
+  addCategory,
+  fetchAllCategories,
+  createNewProduct,
+  UpdateProductDetails,
+};

@@ -14,7 +14,7 @@ const Select: React.ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
       {label && (
         <label
           htmlFor={id}
-          className="inline-block text-gray-400  pl-1 mt-2 text-sm"
+          className="inline-block text-slate-700 pl-1 mt-2 text-sm"
         >
           {label}
         </label>

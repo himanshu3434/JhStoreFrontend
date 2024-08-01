@@ -14,3 +14,7 @@ possible solution (cart store )
 6 -when going from home page category to product category not showing in filter it is applied but not showing 
 
 7 add focus color to admin sidebar on which panel is open 
+
+8 update getallcategories in product form to util function 
+
+9-arrange all api which are for admin to adminapi file from other file 
