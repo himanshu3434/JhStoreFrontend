@@ -18,3 +18,5 @@ possible solution (cart store )
 8 update getallcategories in product form to util function 
 
 9-arrange all api which are for admin to adminapi file from other file 
+
+10 -remove product prop from the productform
