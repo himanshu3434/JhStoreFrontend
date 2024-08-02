@@ -60,9 +60,34 @@ const UpdateProductDetails = async (data: FieldValues, _id: string) => {
   return updateProductDetailResponse;
 };
 
+const updateProductPhotos = async (
+  data: FieldValues,
+  photoName: string,
+  productId: string
+) => {
+  const updateProductPhotoUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/product/update/photo/${photoName}/`;
+  console.log(" going to upload data ", data);
+  const formData = new FormData();
+  formData.append("photo1", data.photo1[0]);
+  formData.append("productId", productId);
+
+  const options = {
+    method: "POST",
+    url: updateProductPhotoUrl,
+
+    data: formData,
+  };
+  const updateProductPhotoResponse = await axios.request(options);
+
+  return updateProductPhotoResponse;
+};
+
 export {
   addCategory,
   fetchAllCategories,
   createNewProduct,
   UpdateProductDetails,
+  updateProductPhotos,
 };

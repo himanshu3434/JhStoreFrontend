@@ -96,15 +96,7 @@ function ProductForm(product: FieldValues) {
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("photo3", { required: !product })}
         />
-        {/* {product && (
-    //   <div className="w-full mb-4">
-    //     <img
-    //       src={bucketService.getImagePreview(post.featuredImage)}
-    //       alt={post.title}
-    //       className="rounded-lg"
-    //     />
-    //   </div>
-    )} */}
+
         <Select
           options={categories}
           label="Categories"

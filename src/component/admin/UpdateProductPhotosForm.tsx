@@ -3,31 +3,34 @@ import { dataType } from "../../types/types";
 import Input from "../Input";
 import Button from "../Button";
 import { Field, FieldValues, useForm } from "react-hook-form";
+import { updateProductPhotos } from "../../api/adminApi";
+import { useNavigate } from "react-router-dom";
 
 function UpdateProductPhotosForm({ productData }: dataType) {
   const { register, handleSubmit } = useForm();
-  const [choice, setChoice] = useState(1);
-  const [heading, setHeading] = useState("Select Photo");
-  const onSubmit = (data: FieldValues) => {};
+  const [choice, setChoice] = useState("nothing");
+  const navigate = useNavigate();
+  const onSubmit = async (data: FieldValues) => {
+    const updatePhotoResponse = await updateProductPhotos(
+      data,
+      choice,
+      productData._id
+    );
+
+    if (updatePhotoResponse.data.success) {
+      navigate("/admin/inventory");
+    }
+  };
   const handleChoice = (e: React.MouseEvent<HTMLButtonElement>) => {
     const button_id = e.currentTarget.id;
-
-    if (button_id === "photo1") {
-      setChoice(3);
-    } else if (button_id === "photo2") {
-      setChoice(4);
-    } else if (button_id === "photo3") {
-      setChoice(5);
-    } else if (button_id === "coverPhoto") {
-      setChoice(2);
-    }
+    setChoice(button_id);
   };
   return (
     <div>
-      {choice === 1 && (
+      {choice === "nothing" && (
         <div className="mt-5">
           <h1 className="font-bold text-xl text-center uppercase ">
-            {heading}
+            Select Photo
           </h1>
 
           <div className="flex  justify-between">
@@ -91,45 +94,21 @@ function UpdateProductPhotosForm({ productData }: dataType) {
         </div>
       )}
 
-      {choice !== 1 && (
-        <form onSubmit={handleSubmit(onSubmit)} className="">
+      {choice !== "nothing" && (
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className=""
+          encType="multipart/form-data"
+        >
           <div className="flex flex-col w-[40vw] mx-auto p-5 space-y-5 shadow-lg">
-            {choice === 2 && (
-              <Input
-                label="Product CoverImage :"
-                type="file"
-                className=" bg-gray-200"
-                accept="image/png, image/jpg, image/jpeg, image/gif"
-                {...register("coverPhoto", { required: true })}
-              />
-            )}
-            {choice === 3 && (
-              <Input
-                label="Product Image1 :"
-                type="file"
-                className=" bg-gray-200"
-                accept="image/png, image/jpg, image/jpeg, image/gif"
-                {...register("photo1", { required: true })}
-              />
-            )}
-            {choice === 4 && (
-              <Input
-                label="Product Image2 :"
-                type="file"
-                className=" bg-gray-200"
-                accept="image/png, image/jpg, image/jpeg, image/gif"
-                {...register("photo2", { required: true })}
-              />
-            )}
-            {choice === 5 && (
-              <Input
-                label="Product Image3 :"
-                type="file"
-                className=" bg-gray-200"
-                accept="image/png, image/jpg, image/jpeg, image/gif"
-                {...register("photo3", { required: true })}
-              />
-            )}
+            <Input
+              label="Product Image :"
+              type="file"
+              className=" bg-gray-200"
+              accept="image/png, image/jpg, image/jpeg, image/gif"
+              {...register("photo1", { required: true })}
+            />
+
             <Button
               type="submit"
               className="w-full bg-yellow-400 hover:bg-green-500 rounded-lg py-2 "
