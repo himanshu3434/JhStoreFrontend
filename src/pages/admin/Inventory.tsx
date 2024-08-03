@@ -8,6 +8,7 @@ import { getAllCartItems } from "../../api/cartApi";
 import { getAllProducts } from "../../api/productsApi";
 import Button from "../../component/Button";
 import { useNavigate } from "react-router-dom";
+import Pagination from "../../component/Pagination";
 const CategoryForm = lazy(() => import("../../component/admin/CategoryForm"));
 const ProductForm = lazy(() => import("../../component/admin/ProductForm"));
 function Inventory() {
@@ -15,11 +16,14 @@ function Inventory() {
   const [formNo, setFormNo] = useState(0);
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
   const navigate = useNavigate();
-
+  const [totalPageNumber, setTotalPageNumber] = useState(1);
+  const [page, setPage] = useState(1);
   const fetchAllProducts = async () => {
-    const getAllProductsResponse = await getAllProducts(1);
+    const getAllProductsResponse = await getAllProducts(page);
     if (getAllProductsResponse.data.success === true) {
-      setAllProducts(getAllProductsResponse.data.data);
+      setTotalPageNumber(getAllProductsResponse.data.data.totalPageNumber);
+
+      setAllProducts(getAllProductsResponse.data.data.allProducts);
     }
   };
   const toggleOpen = () => {
@@ -36,7 +40,7 @@ function Inventory() {
   };
   useEffect(() => {
     fetchAllProducts();
-  }, []);
+  }, [page]);
   return (
     <div className="flex">
       <div>
@@ -127,6 +131,11 @@ function Inventory() {
               })}
           </tbody>
         </table>
+        {totalPageNumber > 1 ? (
+          <div>
+            <Pagination page={page} setPage={setPage} total={totalPageNumber} />
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -27,8 +27,12 @@ function Product({ productDetails }: productProps) {
       <div className="  w-[22vw] shadow-lg rounded-lg ">
         <NavLink to={`/product/${productDetails._id}`} className="">
           <div className="space-y-2 px-2">
-            <div className="">
-              <img src={productDetails.coverPhoto} alt="" />
+            <div className="flex  justify-center">
+              <img
+                src={productDetails.coverPhoto}
+                alt=""
+                className=" h-[25vh] "
+              />
             </div>
             <div className="  overflow-ellipsis overflow-hidden h-5 whitespace-nowrap">
               {productDetails.name}

@@ -2,19 +2,23 @@ import React, { useEffect, useState } from "react";
 import AdminSideBar from "../../component/admin/AdminSideBar";
 import { fetchAllUsers } from "../../api/userApi";
 import { Iuser } from "../../types/types";
+import Pagination from "../../component/Pagination";
 
 function User() {
   const [allUser, setAllUser] = useState<Iuser[]>([]);
+  const [totalPageNumber, setTotalPageNumber] = useState(1);
+  const [page, setPage] = useState(1);
   const getAllUsers = async () => {
-    const result = await fetchAllUsers(1);
+    const result = await fetchAllUsers(page);
     if (result.data.success === true) {
-      setAllUser(result.data.data);
+      setTotalPageNumber(result.data.data.totalPageNumber);
+      setAllUser(result.data.data.users);
     }
   };
 
   useEffect(() => {
     getAllUsers();
-  }, []);
+  }, [page]);
   return (
     <div className="flex">
       <div>
@@ -57,6 +61,12 @@ function User() {
               })}
           </tbody>
         </table>
+
+        {totalPageNumber > 1 ? (
+          <div>
+            <Pagination page={page} setPage={setPage} total={totalPageNumber} />
+          </div>
+        ) : null}
       </div>
     </div>
   );

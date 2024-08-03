@@ -8,8 +8,13 @@ type filterType = {
   minPrice: string;
   maxPrice: string;
 };
-export const fetchAllProductsWithFilters = async (filter: filterType) => {
-  const FilterUrl = `${import.meta.env.VITE_SERVER_URL}/product/all/filter/1`;
+export const fetchAllProductsWithFilters = async (
+  filter: filterType,
+  page: number
+) => {
+  const FilterUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/product/all/filter/${page}`;
 
   console.log("filterss", filter);
   const createOptions = {

@@ -2,19 +2,25 @@ import React, { useEffect, useState } from "react";
 import AdminSideBar from "../../component/admin/AdminSideBar";
 import { IOrderAndOrderItems } from "../../types/types";
 import { fetchAllOrders } from "../../api/orderApi";
+import Pagination from "../../component/Pagination";
 
 function AllOrders() {
   const [allOrders, setAllOrders] = useState<IOrderAndOrderItems[]>([]);
+  const [totalPageNumber, setTotalPageNumber] = useState(1);
+  const [page, setPage] = useState(1);
   const getAllOrders = async () => {
-    const allOrdersResponse = await fetchAllOrders(1);
+    const allOrdersResponse = await fetchAllOrders(page);
+
     if (allOrdersResponse.data.success === true) {
-      console.log("all order data ", allOrdersResponse.data.data);
-      setAllOrders(allOrdersResponse.data.data);
+      console.log("all order data ", allOrdersResponse.data.data.OrdersDetails);
+      setTotalPageNumber(allOrdersResponse.data.data.totalPageNumber);
+
+      setAllOrders(allOrdersResponse.data.data.OrdersDetails);
     }
   };
   useEffect(() => {
     getAllOrders();
-  }, []);
+  }, [page]);
   return (
     <div className="flex">
       <div>
@@ -59,6 +65,12 @@ function AllOrders() {
               })}
           </tbody>
         </table>
+
+        {totalPageNumber > 1 ? (
+          <div>
+            <Pagination page={page} setPage={setPage} total={totalPageNumber} />
+          </div>
+        ) : null}
       </div>
     </div>
   );

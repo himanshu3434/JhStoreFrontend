@@ -23,7 +23,7 @@ function Products() {
   const filters = useSelector((state: RootState) => state.filter);
   const [page, setPage] = useState(1);
   const getAllProducts = async () => {
-    const allProducts = await fetchAllProductsWithFilters(filters);
+    const allProducts = await fetchAllProductsWithFilters(filters, page);
 
     if (allProducts.data.success) {
       console.log("all products", allProducts.data);
@@ -34,7 +34,7 @@ function Products() {
 
   useEffect(() => {
     getAllProducts();
-  }, [filters]);
+  }, [filters, page]);
 
   return (
     <div className="flex space-x-3 ">

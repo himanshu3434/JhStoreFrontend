@@ -67,7 +67,7 @@ function UpdateProductDetailsForm({ productData }: dataType) {
           <Select
             options={categories}
             label="Categories"
-            className="mb-4 bg-gray-500"
+            className="mb-4 "
             {...register("categoryName", { required: true })}
           />
           <Button
