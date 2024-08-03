@@ -38,38 +38,41 @@ function ProductForm(product: FieldValues) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-wrap"
+      className="flex flex-wrap mx-3"
       encType="multipart/form-data"
     >
-      <div className="">
+      <div className=" w-full">
+        <div className="font-semibold text-center   opacity-45  ">
+          Create Product{" "}
+        </div>
         <Input
           label="Name :"
           placeholder="Product Name"
-          className=" bg-gray-200"
+          className=" rounded-lg py-1 px-2 w-full   placeholder-opacity-65"
           {...register("name", { required: true })}
         />
         <Input
           label="Description :"
           placeholder="Description"
-          className=" bg-gray-200"
+          className=" rounded-lg py-1 px-2 w-full   placeholder-opacity-65"
           {...register("description", { required: true })}
         />
         <Input
           label="Stock :"
           placeholder="Stock"
-          className=" bg-gray-200"
+          className=" rounded-lg py-1 px-2 w-full   placeholder-opacity-65"
           {...register("stock", { required: true })}
         />
         <Input
           label="Price :"
           placeholder="Price"
-          className="  bg-gray-200"
+          className="  rounded-lg py-1 px-2 w-full   placeholder-opacity-65"
           {...register("price", { required: true })}
         />
       </div>
       <div className=" ">
         <Input
-          label="Product CoverImage :"
+          label="Product CoverImage"
           type="file"
           className=" bg-gray-200"
           accept="image/png, image/jpg, image/jpeg, image/gif"
@@ -100,13 +103,13 @@ function ProductForm(product: FieldValues) {
         <Select
           options={categories}
           label="Categories"
-          className="mb-4 bg-gray-500"
+          className=""
           {...register("categoryName", { required: true })}
         />
         <Button
           type="submit"
           bgColor={product ? "bg-green-500" : undefined}
-          className="w-full"
+          className="w-full mt-2  bg-sky-500 rounded-lg py-2 text-white hover:bg-sky-400"
         >
           "Submit"
         </Button>

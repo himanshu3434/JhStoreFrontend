@@ -37,24 +37,24 @@ function Products() {
   }, [filters]);
 
   return (
-    <div className="flex space-x-3">
+    <div className="flex space-x-3 ">
       <aside>
         <Filters />
       </aside>
 
-      <div className="absolute right-5 mt-3 ">
+      <div className="absolute right-5 mt-3  ">
         <select
           onChange={FilterChangeHandler}
           id="sort"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 focus:outline-none"
         >
           <option value="asc">Low to High</option>
           <option value="dsc">High To Low</option>
         </select>
       </div>
 
-      <div className="mt-10 ">
-        <div className="flex space-x-6">
+      <div className="mt-14  p-4 ">
+        <div className="flex  flex-wrap ">
           {products.map((product: IProduct) => {
             return <Product key={product._id} productDetails={product} />;
           })}

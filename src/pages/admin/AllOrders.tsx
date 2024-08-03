@@ -30,7 +30,7 @@ function AllOrders() {
 
               <th className="">Quantity</th>
               <th className="">Amount</th>
-              <th className="">Action</th>
+              <th className="">Status</th>
             </tr>
           </thead>
           <tbody className="text-black">
@@ -53,7 +53,7 @@ function AllOrders() {
 
                     <td>{data.quantity}</td>
                     <td>{data.orderAmount}</td>
-                    <td></td>
+                    <td>{data.status.toUpperCase()}</td>
                   </tr>
                 );
               })}

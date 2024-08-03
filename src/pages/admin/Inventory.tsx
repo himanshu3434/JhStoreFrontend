@@ -43,8 +43,8 @@ function Inventory() {
         <AdminSideBar />
       </div>
       <div>
-        <div className="fixed bottom-8 right-8  hover:bg-red-300 rounded-3xl p-3 bg-red-400  cursor-pointer  group">
-          <div className="invisible absolute right-4 bottom-10 group-hover:visible   w-36 bg-blue-300 text-center  leading-loose ">
+        <div className="fixed bottom-8 right-8  hover:bg-red-300 rounded-3xl p-3 bg-red-400  cursor-pointer  group ">
+          <div className="invisible absolute right-4 bottom-10 group-hover:visible   w-36 bg-blue-300 text-center  leading-loose rounded-md ">
             <div
               className="cursor-pointer hover:text-white"
               onClick={handlerCategory}
@@ -64,7 +64,7 @@ function Inventory() {
         <div>
           {isOpen && (
             <div className="fixed  inset-0 opacity-90 bg-gray-400   ">
-              <div className="absolute right-[30vw] bottom-[10vh]  w-[40vw] h-[80vh]  bg-yellow-500">
+              <div className="absolute right-[30vw] bottom-[10vh]  w-[45vw] h-[85vh]  bg-yellow-500 ">
                 <div
                   className="absolute right-2 top-2  cursor-pointer "
                   onClick={toggleOpen}
