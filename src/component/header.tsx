@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
 import { FaBorderAll, FaRegAddressCard, FaRegUser } from "react-icons/fa";
 import { FiArchive } from "react-icons/fi";
@@ -24,6 +24,7 @@ function Header() {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const logout = useLogout();
+  const navigate = useNavigate();
   //this is for mobile navbar currently not used
   const searchFilterHandler = (data: FieldValues) => {
     data = data.search;
@@ -39,6 +40,7 @@ function Header() {
     const searchTimeout = setTimeout(() => {
       const data = search;
       dispatch(updateFilter({ data, id: "search" }));
+      navigate("/products");
     }, 500);
 
     return () => {
