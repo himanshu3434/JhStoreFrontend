@@ -57,7 +57,12 @@ function CheckOutForm({ allCartItems, discount }: any) {
       <div>
         <form onSubmit={handleSubmit}>
           <PaymentElement />
-          <Button type="submit">Submit </Button>
+          <Button
+            type="submit"
+            className="hover:bg-blue-300 w-full bg-blue-400 text-white font-semibold my-2 h-[7vh] rounded-lg"
+          >
+            Submit{" "}
+          </Button>
         </form>
       </div>
     </>
@@ -78,10 +83,15 @@ function CheckOut() {
   }, []);
 
   return clientSecret === undefined ? null : (
-    <div>
-      <Elements stripe={stripePromise} options={{ clientSecret }}>
-        <CheckOutForm allCartItems={allCartItems} discount={discount} />
-      </Elements>
+    <div className="w-[40vw] h-[60vh] mx-auto ">
+      <h1 className="font-semibold text-3xl mb-10 mt-3 uppercase text-center  ">
+        Payment Gateway
+      </h1>
+      <div className="shadow-md p-3 rounded-lg">
+        <Elements stripe={stripePromise} options={{ clientSecret }}>
+          <CheckOutForm allCartItems={allCartItems} discount={discount} />
+        </Elements>
+      </div>
     </div>
   );
 }

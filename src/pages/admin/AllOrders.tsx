@@ -48,7 +48,7 @@ function AllOrders() {
                   <tr
                     className={
                       index % 2 !== 0
-                        ? `bg-[#706666] text-white h-[3em] text-sm `
+                        ? `bg-gray-200  h-[3em] text-sm `
                         : "h-[3em] text-sm"
                     }
                     key={data._id}
