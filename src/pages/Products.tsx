@@ -54,7 +54,7 @@ function Products() {
       </div>
 
       <div className="mt-14  p-4 ">
-        <div className="flex  flex-wrap ">
+        <div className="flex  flex-wrap  justify-center">
           {products.map((product: IProduct) => {
             return <Product key={product._id} productDetails={product} />;
           })}

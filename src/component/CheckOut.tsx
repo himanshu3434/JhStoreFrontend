@@ -15,6 +15,9 @@ import {
 } from "@stripe/react-stripe-js";
 import Button from "./Button";
 import { orderCreate } from "../api/orderApi";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/Store";
+import { Iuser } from "../types/types";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 function CheckOutForm({ allCartItems, discount }: any) {
   const stripe = useStripe();
@@ -73,13 +76,17 @@ function CheckOut() {
   const location = useLocation();
   const { allCartItems, subTotal, discount } = location.state;
   const [clientSecret, setClientSecret] = useState(undefined);
-
+  const userData = useSelector(
+    (state: RootState) => state.auth.userData
+  ) as Iuser | null;
   useEffect(() => {
-    createPaymentIntent((subTotal - discount) * 100).then((response) => {
-      if (response.data.success) {
-        setClientSecret(response.data.data.clientSecret);
+    createPaymentIntent((subTotal - discount) * 100, userData).then(
+      (response) => {
+        if (response.data.success) {
+          setClientSecret(response.data.data.clientSecret);
+        }
       }
-    });
+    );
   }, []);
 
   return clientSecret === undefined ? null : (

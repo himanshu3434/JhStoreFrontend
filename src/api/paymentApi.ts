@@ -1,6 +1,10 @@
 import axios from "axios";
+import { Iuser } from "../types/types";
 
-export const createPaymentIntent = async (amount: number) => {
+export const createPaymentIntent = async (
+  amount: number,
+  userData: Iuser | null
+) => {
   const createPaymentIntentURL = `${
     import.meta.env.VITE_SERVER_URL
   }/payment/create`;
@@ -9,7 +13,7 @@ export const createPaymentIntent = async (amount: number) => {
     method: "POST",
     url: createPaymentIntentURL,
 
-    data: { amount },
+    data: { amount, userData },
   };
   const getPaymentIntentCreateResponse = await axios.request(options);
 

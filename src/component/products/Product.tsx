@@ -31,7 +31,7 @@ function Product({ productDetails }: productProps) {
               <img
                 src={productDetails.coverPhoto}
                 alt=""
-                className=" h-[25vh] "
+                className=" h-[25vh] lg:h-[30vh] "
               />
             </div>
             <div className="  overflow-ellipsis overflow-hidden h-5 whitespace-nowrap">

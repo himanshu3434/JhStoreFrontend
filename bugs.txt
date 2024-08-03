@@ -20,3 +20,15 @@ possible solution (cart store )
 9-arrange all api which are for admin to adminapi file from other file 
 
 10 -remove product prop from the productform
+
+
+11- add action in order of user 
+
+
+12 -remove all console.log
+
+
+13 check address if present then only redirect to payment page (implement )
+
+
+14 add osm background in the login and signup page 

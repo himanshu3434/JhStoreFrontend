@@ -48,10 +48,10 @@ function Header() {
 
   const ProfileHover = (
     <div>
-      <div className=" bg-white shadow-md p-4 ">
+      <div className=" bg-white shadow-md p-4 rounded-lg ">
         {userData && userData.role === "admin" ? (
           <Link to="/admin">
-            <div className="flex  items-center my-2 space-x-2">
+            <div className="flex  items-center my-2 space-x-2 hover:text-gray-500">
               <GrUserAdmin />
               <div>Admin Panel</div>
             </div>
@@ -59,7 +59,7 @@ function Header() {
         ) : null}
         {userData && (
           <Link to="/profile">
-            <div className="flex items-center  my-2 space-x-2">
+            <div className="flex items-center  my-2 space-x-2 hover:text-gray-500">
               <FiEdit2 />
               <div>Edit Profile</div>
             </div>
@@ -67,7 +67,7 @@ function Header() {
         )}
         {userData && (
           <Link to="/orders">
-            <div className="flex items-center  my-2 space-x-2">
+            <div className="flex items-center  my-2 space-x-2 hover:text-gray-500">
               <GoChecklist />
               <div>Orders</div>
             </div>
@@ -75,7 +75,7 @@ function Header() {
         )}
         {userData && (
           <Link to="/address">
-            <div className="flex items-center  my-2 space-x-2">
+            <div className="flex items-center  my-2 space-x-2 hover:text-gray-500">
               <FaRegAddressCard />
               <div>Address</div>
             </div>
@@ -84,7 +84,7 @@ function Header() {
 
         {userData && (
           <div
-            className="flex   items-center   my-2 space-x-2"
+            className="flex   items-center   my-2 space-x-2 hover:text-gray-500"
             onClick={handlerLogout}
           >
             <GrLogout />
@@ -93,7 +93,7 @@ function Header() {
         )}
         {userData === null ? (
           <Link to="/login">
-            <div className="flex   items-center   my-2 space-x-2">
+            <div className="flex   items-center   my-2 space-x-2 hover:text-gray-500">
               <TbLogin size={20} />
               <div>Login</div>
             </div>
