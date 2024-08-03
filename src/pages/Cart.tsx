@@ -88,34 +88,42 @@ function Cart() {
               ))
             : null}
         </div>
-        <div className="w-[10rem] text-center">
-          <div className="font-semibold text-xl mb-4">Bill Details</div>
-          <div>
-            <span>Subtotal: </span>₹ {subTotal}
+        <div className="w-[10rem]  ">
+          <div className="font-semibold text-xl mb-4 text-center">
+            Bill Details
           </div>
-          <div>
-            <span>Shipping: </span>Free
-          </div>
-          <div>
-            <span>Discount</span>: ₹ {discount > 0 ? -discount : discount}
-          </div>
+          <div className=" mx-3">
+            <div className="flex  justify-between">
+              <span className="">Subtotal: </span>
+              <span className="">₹ {subTotal}</span>
+            </div>
+            <div className="flex  justify-between">
+              <span>Shipping: </span>
+              <span className="">Free</span>
+            </div>
+            <div className="flex  justify-between">
+              <span>Discount :</span>
+              <span>₹ {discount > 0 ? -discount : discount}</span>
+            </div>
 
-          <div>
-            <span>Total: </span>₹ {subTotal - discount}
+            <div className="flex  justify-between">
+              <span>Total: </span>
+              <span>₹ {subTotal - discount}</span>
+            </div>
           </div>
 
           {subTotal > 0 && (
-            <div>
+            <div className="text-center">
               <div>
                 <Input
-                  label="Add Coupon :"
+                  label="Add Coupon "
                   type="text"
                   className={
                     validCouponId === ""
-                      ? "bg-white text-black   "
-                      : "bg-green-200 text-black "
+                      ? "bg-white text-black   w-3/4 border-2 border-gray-100  rounded-lg px-2"
+                      : "bg-green-200 text-black w-3/4  border-gray-100  rounded-lg px-2"
                   }
-                  placeholder="Enter Coupon Code"
+                  placeholder="Enter Coupon "
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setCoupon(e.target.value)
                   }
