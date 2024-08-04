@@ -1,15 +1,13 @@
 1- cart data is old and not refreshed in cart page when we increase the item on cart page fix it 
 possible solution (cart store )  [FIXED]
 
-2- fix ui of bill detail 
+2- fix ui of bill detail [FIXED]
 
-3- fix name and description while creating payment intent 
-
-
-4- create a page for password reset
+3- fix name and description while creating payment intent [FIXED]
 
 
-5- add items in order of user (optional )
+
+
 
 6 -when going from home page category to product category not showing in filter it is applied but not showing 
 
@@ -35,3 +33,12 @@ possible solution (cart store )  [FIXED]
 
 
 15 remove all useless imports 
+
+
+
+
+
+
+NEXT VERSION 
+4- create a page for password reset
+5- add items in order of user (optional )

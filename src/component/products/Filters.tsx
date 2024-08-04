@@ -57,6 +57,7 @@ function Filters() {
         id="category"
         defaultValue={currentFilters.category}
         onChange={FilterChangeHandler}
+        value={currentFilters.category}
       >
         <option value="">None</option>
         {categories?.map((option) => (
