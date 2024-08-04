@@ -1,11 +1,11 @@
-import React from "react";
-import Button from "../component/Button";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { updateFilter } from "../features/filterSlice";
 
 function Home() {
   const dispatch = useDispatch();
+
+  console.log("we are in home ");
   return (
     <div>
       <div className="absolute inset-0 -z-10">

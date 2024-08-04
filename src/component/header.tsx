@@ -40,7 +40,7 @@ function Header() {
     const searchTimeout = setTimeout(() => {
       const data = search;
       dispatch(updateFilter({ data, id: "search" }));
-      navigate("/products");
+      if (data.length !== 0) navigate("/products");
     }, 500);
 
     return () => {

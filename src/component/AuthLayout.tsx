@@ -1,8 +1,7 @@
 import React, { useEffect, useState, ReactElement } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/Store";
+
 import { useNavigate } from "react-router-dom";
-import { Iuser } from "../types/types";
+
 type authType = {
   children?: ReactElement;
   userStatus: boolean;
@@ -22,9 +21,12 @@ function AuthLayout({
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("here   auth log in chec k");
     if (authentication && userStatus !== authentication) navigate("/login");
-    else if (authentication === false && userStatus !== authentication)
+    else if (authentication === false && userStatus !== authentication) {
+      console.log("going to home from authlayout ");
       navigate("/");
+    }
 
     if (adminOnly == true && isAdmin === false) navigate("/");
     setLoading(false);

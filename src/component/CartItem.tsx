@@ -12,11 +12,13 @@ type cartItemWithDelete = {
   cartItem: ICartItem;
   setDeleteCartItem: React.Dispatch<React.SetStateAction<(string | number)[]>>;
   setSubTotal: React.Dispatch<React.SetStateAction<number>>;
+  setQuantityChange: React.Dispatch<React.SetStateAction<boolean>>;
 };
 function CartItem({
   cartItem,
   setDeleteCartItem,
   setSubTotal,
+  setQuantityChange,
 }: cartItemWithDelete) {
   const userData = useSelector((state: RootState) => state.auth.userData);
 
@@ -39,6 +41,7 @@ function CartItem({
         await cudToCart(data);
         setSubTotal((prev) => prev - cartItem.productDetails.price);
         setCarItemQuantity((prev) => prev - 1);
+        setQuantityChange((prev) => !prev);
       }
     } else {
       if (cartItemQuantity < Number(cartItem.productDetails.stock)) {
@@ -47,6 +50,7 @@ function CartItem({
         await cudToCart(data);
         setSubTotal((prev) => prev + cartItem.productDetails.price);
         setCarItemQuantity((prev) => prev + 1);
+        setQuantityChange((prev) => !prev);
       }
     }
   };

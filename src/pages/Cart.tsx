@@ -15,6 +15,7 @@ function Cart() {
   const navigate = useNavigate();
   const [deleteCartItem, setDeleteCartItem] = useState(["", 0]);
   const [coupon, setCoupon] = useState("");
+  const [qunatityChange, setQuantityChange] = useState(false);
   const [validCouponId, setValidCouponId] = useState("");
   const [discount, setDiscount] = useState(0);
 
@@ -42,7 +43,7 @@ function Cart() {
   };
   useEffect(() => {
     deleteIfRequiredAndGetAllCartItemsHandler();
-  }, [deleteCartItem]);
+  }, [deleteCartItem, qunatityChange]);
   useEffect(() => {
     const checkCouponTimeout = setTimeout(async () => {
       if (coupon !== "") {
@@ -84,6 +85,7 @@ function Cart() {
                   cartItem={cartItem}
                   setDeleteCartItem={setDeleteCartItem}
                   setSubTotal={setSubTotal}
+                  setQuantityChange={setQuantityChange}
                 />
               ))
             : null}

@@ -1,8 +1,8 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-const Header = lazy(() => import("./component/header"));
 const Home = lazy(() => import("./pages/Home"));
+const Header = lazy(() => import("./component/header"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Products = lazy(() => import("./pages/Products"));
 const WishList = lazy(() => import("./pages/WishList"));
@@ -25,25 +25,30 @@ import { getCurrentUser } from "./api/userApi";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "./features/authSlice";
 import AuthLayout from "./component/AuthLayout";
-import { RootState } from "./store/Store";
+
 import { Iuser } from "./types/types";
+import { RootState } from "./store/Store";
 function App() {
-  const [count, setCount] = useState(0);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
-  const [userStatus, setUserStatus] = useState(false);
-  const [userData, setUserData] = useState<Iuser | null>(null);
+  const userStatus = useSelector((state: RootState) => state.auth.status) as
+    | boolean
+    | false;
+  const userData = useSelector(
+    (state: RootState) => state.auth.userData
+  ) as Iuser | null;
 
   useEffect(() => {
     getCurrentUser()
       .then((user) => {
         if (user.data.success) {
           const userData = user.data.data.user;
-          setUserData(userData);
-          setUserStatus(true);
+
           dispatch(login({ userData }));
-        } else dispatch(logout());
+        } else {
+          dispatch(logout());
+        }
       })
       .finally(() => setLoading(false));
   }, []);
@@ -52,6 +57,14 @@ function App() {
   ) : (
     <div className="">
       <Header />
+      <div>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </Suspense>
+      </div>
+
       <div className="px-2 md:px-5">
         <Suspense fallback={<Loading />}>
           <Routes>
@@ -221,13 +234,6 @@ function App() {
                 </AuthLayout>
               }
             />
-          </Routes>
-        </Suspense>
-      </div>
-      <div>
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
           </Routes>
         </Suspense>
       </div>
