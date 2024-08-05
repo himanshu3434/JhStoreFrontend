@@ -11,22 +11,20 @@ possible solution (cart store )  [FIXED]
 
 6 -when going from home page category to product category not showing in filter it is applied but not showing  [FIXED]
 
-7 add focus color to admin sidebar on which panel is open 
+7 add focus color to admin sidebar on which panel is open [FIXED]
 
 8 update getallcategories in product form to util function 
 
-9-arrange all api which are for admin to adminapi file from other file 
 
-10 -remove product prop from the productform
+10 -remove product prop from the productform [FIXED]
 
 
-11- add action in order of user 
 
 
 12 -remove all console.log
 
 
-13 check address if present then only redirect to payment page (implement )
+13 check address if present then only redirect to payment page (implement ) [FIXED]
 
 
 14 add osm background in the login and signup page 
@@ -40,6 +38,11 @@ possible solution (cart store )  [FIXED]
 
 
 
+
+
 NEXT VERSION 
 4- create a page for password reset
 5- add items in order of user (optional )
+9-arrange all api which are for admin to adminapi file from other file 
+11- add action in order of user 
+17 coupon add pge

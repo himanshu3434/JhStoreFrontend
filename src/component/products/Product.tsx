@@ -7,18 +7,27 @@ import { RootState } from "../../store/Store";
 import { cudToCart } from "../../api/cartApi";
 
 function Product({ productDetails }: productProps) {
-  const userData = useSelector((state: RootState) => state.auth.userData);
+  const userData = useSelector(
+    (state: RootState) => state.auth.userData
+  ) as Iuser | null;
+  const userStatus = useSelector((state: RootState) => state.auth.status) as
+    | boolean
+    | false;
   const navigate = useNavigate();
   const addToCartProductHandler = async () => {
-    const data = {
-      user_id: (userData as Iuser | null)?._id || "",
-      product_id: productDetails._id,
-      quantity: 1,
-    };
-    const addToCartResponse = await cudToCart(data);
+    if (userStatus === true) {
+      const data = {
+        user_id: userData?._id || "",
+        product_id: productDetails._id,
+        quantity: 1,
+      };
+      const addToCartResponse = await cudToCart(data);
 
-    if (addToCartResponse.data.success) {
-      navigate("/products");
+      if (addToCartResponse.data.success) {
+        navigate("/products");
+      }
+    } else {
+      navigate("/login");
     }
   };
 

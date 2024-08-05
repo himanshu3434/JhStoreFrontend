@@ -19,7 +19,9 @@ function Cart() {
   const [validCouponId, setValidCouponId] = useState("");
   const [discount, setDiscount] = useState(0);
 
-  const userData = useSelector((state: RootState) => state.auth.userData);
+  const userData = useSelector(
+    (state: RootState) => state.auth.userData
+  ) as Iuser | null;
   const deleteIfRequiredAndGetAllCartItemsHandler = async () => {
     if (deleteCartItem[0] !== "") {
       const data = {
@@ -135,9 +137,11 @@ function Cart() {
                 type="button"
                 className="bg-sky-500 text-white py-2 px-4 rounded-lg mt-4"
                 onClick={() =>
-                  navigate("/pay", {
-                    state: { allCartItems, subTotal, discount },
-                  })
+                  userData?.address === undefined
+                    ? navigate("/address")
+                    : navigate("/pay", {
+                        state: { allCartItems, subTotal, discount },
+                      })
                 }
               >
                 Checkout

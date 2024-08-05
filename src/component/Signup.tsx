@@ -46,7 +46,7 @@ function Signup() {
           <form onSubmit={handleSubmit(signup)}>
             <div>
               <Input
-                className="rounded-lg py-2 px-3 w-full"
+                className="rounded-lg py-2 px-3 w-full text-black"
                 placeholder="Enter your Full Name"
                 {...register("fullName", {
                   required: true,
@@ -55,7 +55,7 @@ function Signup() {
 
               <Input
                 type="email"
-                className="rounded-lg py-2 px-3 w-full mt-2"
+                className="rounded-lg py-2 px-3 w-full mt-2 text-black"
                 placeholder="Enter your Email address"
                 {...register("email", {
                   required: true,
@@ -69,7 +69,7 @@ function Signup() {
               ></Input>
               <Input
                 type="password"
-                className="rounded-lg py-2 px-3 w-full mt-2 mb-2"
+                className="rounded-lg py-2 px-3 w-full mt-2 mb-2 text-black"
                 placeholder="Enter your Password "
                 {...register("password", {
                   required: true,

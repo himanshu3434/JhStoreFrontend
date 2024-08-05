@@ -35,7 +35,12 @@ function ProductDetails() {
   const [productPhotos, setProductPhotos] = useState(["", "", "", ""]);
   const [cartQuantity, setCartQuantity] = useState(0);
   const navigate = useNavigate();
-  const userData = useSelector((state: RootState) => state.auth.userData);
+  const userData = useSelector(
+    (state: RootState) => state.auth.userData
+  ) as Iuser | null;
+  const userStatus = useSelector((state: RootState) => state.auth.status) as
+    | boolean
+    | false;
   const getProductAndCartQuantityDetails = async () => {
     const productFetchResponse = await fetchSingleProductUsingId(id as string);
     if (productFetchResponse.data.success) {
@@ -60,18 +65,19 @@ function ProductDetails() {
     }
   };
   const addToCartHandler = async () => {
-    console.log("userData in cart ", userData);
-    const data = {
-      user_id: (userData as Iuser | null)?._id || "",
-      product_id: productDetails._id,
-      quantity: quantity,
-    };
-    console.log("request data in product dtails ", data);
-    const addToCartResponse = await cudToCart(data);
+    if (userStatus === true) {
+      const data = {
+        user_id: userData?._id || "",
+        product_id: productDetails._id,
+        quantity: quantity,
+      };
+      console.log("request data in product dtails ", data);
+      const addToCartResponse = await cudToCart(data);
 
-    if (addToCartResponse.data.success) {
-      navigate("/products");
-    }
+      if (addToCartResponse.data.success) {
+        navigate("/products");
+      }
+    } else navigate("/login");
   };
   const quantityHandler = async (e: MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;

@@ -5,7 +5,7 @@ import Button from "../Button";
 import Select from "../Select";
 import { createNewProduct, fetchAllCategories } from "../../api/adminApi";
 import { useNavigate } from "react-router-dom";
-function ProductForm(product: FieldValues) {
+function ProductForm() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
@@ -76,28 +76,28 @@ function ProductForm(product: FieldValues) {
           type="file"
           className=" bg-gray-200"
           accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("coverPhoto", { required: !product })}
+          {...register("coverPhoto", { required: true })}
         />
         <Input
           label="Product Image1 :"
           type="file"
           className=" bg-gray-200"
           accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("photo1", { required: !product })}
+          {...register("photo1", { required: true })}
         />
         <Input
           label="Product Image2 :"
           type="file"
           className=" bg-gray-200"
           accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("photo2", { required: !product })}
+          {...register("photo2", { required: true })}
         />
         <Input
           label="Product Image3 :"
           type="file"
           className=" bg-gray-200"
           accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("photo3", { required: !product })}
+          {...register("photo3", { required: true })}
         />
 
         <Select
@@ -108,7 +108,6 @@ function ProductForm(product: FieldValues) {
         />
         <Button
           type="submit"
-          bgColor={product ? "bg-green-500" : undefined}
           className="w-full mt-2  bg-sky-500 rounded-lg py-2 text-white hover:bg-sky-400"
         >
           "Submit"
