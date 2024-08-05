@@ -5,6 +5,7 @@ import Button from "../Button";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/Store";
 import { cudToCart } from "../../api/cartApi";
+import { toastSuccess, toastWarning } from "../../utils/toast";
 
 function Product({ productDetails }: productProps) {
   const userData = useSelector(
@@ -21,12 +22,15 @@ function Product({ productDetails }: productProps) {
         product_id: productDetails._id,
         quantity: 1,
       };
+      console.log("   userData ", userData);
       const addToCartResponse = await cudToCart(data);
 
       if (addToCartResponse.data.success) {
+        toastSuccess("Product Added to Cart");
         navigate("/products");
       }
     } else {
+      toastWarning("Please Login to Add Product to Cart");
       navigate("/login");
     }
   };

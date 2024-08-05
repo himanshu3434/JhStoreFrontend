@@ -7,6 +7,7 @@ import { Iuser } from "../types/types";
 import { updateProfile } from "../api/userApi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toastError, toastSuccess } from "../utils/toast";
 type editFormType = {
   userData: Iuser;
   setEditToggle: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,7 +32,9 @@ const AddressEditForm = ({ userData, setEditToggle }: editFormType) => {
         dispatch(storeLogin({ userData }));
 
         setEditToggle(false);
+        toastSuccess("Address Updated Successfully");
       } else {
+        toastError("Address Update Failed");
       }
     } catch (error) {
       console.log(error);

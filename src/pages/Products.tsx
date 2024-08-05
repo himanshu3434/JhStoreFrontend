@@ -26,7 +26,6 @@ function Products() {
     const allProducts = await fetchAllProductsWithFilters(filters, page);
 
     if (allProducts.data.success) {
-      console.log("all products", allProducts.data);
       setTotalPageNumber(allProducts.data.data.totalPageNumber);
       setProducts(allProducts.data.data.limitedProductList);
     }

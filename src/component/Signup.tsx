@@ -9,6 +9,7 @@ import Input from "./Input";
 import Button from "./Button";
 import Select from "./Select";
 import { loginUser, registerUser } from "../api/userApi";
+import { toastError, toastSuccess } from "../utils/toast";
 function Signup() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,12 +22,14 @@ function Signup() {
 
       if (session.data.success) {
         const userLogin = await loginUser(data);
-
+        toastSuccess("Account Created Successfully");
         if (userLogin.data.success) {
-          const userData = userLogin.data.data;
+          const userData = userLogin.data.data.user;
+          toastSuccess("Login Success");
 
           dispatch(storeLogin({ userData }));
         }
+
         navigate("/");
       }
     } catch (error) {

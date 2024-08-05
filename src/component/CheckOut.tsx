@@ -4,7 +4,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { createPaymentIntent } from "../api/paymentApi";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -18,10 +18,12 @@ import { orderCreate } from "../api/orderApi";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/Store";
 import { Iuser } from "../types/types";
+import { toastError, toastInfo, toastSuccess } from "../utils/toast";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 function CheckOutForm({ allCartItems, discount }: any) {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
   console.log(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,7 +52,12 @@ function CheckOutForm({ allCartItems, discount }: any) {
           transaction_id
         );
 
-        console.log("order created success ", orderCreateResponse);
+        if (orderCreateResponse.data.success) {
+          toastSuccess("Order Placed Successfully");
+          navigate("/orders");
+        } else {
+          toastError("Order Failed");
+        }
       }
     }
   };

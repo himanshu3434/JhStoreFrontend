@@ -7,6 +7,7 @@ import { Iuser } from "../types/types";
 import { updateProfile } from "../api/userApi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toastError, toastSuccess } from "../utils/toast";
 type editFormType = {
   userData: Iuser;
   setEditToggle: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,11 +38,12 @@ const ProfileEditForm = ({ userData, setEditToggle }: editFormType) => {
       if (updateResponse.data.success) {
         const userData = updateResponse.data.data;
         dispatch(storeLogin({ userData }));
-        console.log("  user data after update ", userData);
-        console.log("user date ", data.dob);
+
         setEditToggle(false);
+        toastSuccess("Profile Updated SuccessFully");
       } else {
         // handler error
+        toastError("Profile Update Failed");
       }
     } catch (error) {
       console.log(error);

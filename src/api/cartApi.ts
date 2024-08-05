@@ -38,7 +38,7 @@ export const getCartItemQuantity = async (
   user_id: string,
   product_id: string
 ) => {
-  console.log("api in the product  ", product_id);
+  // console.log("api in the product  ", product_id);
   const getCartItemQuantityUrl = `${
     import.meta.env.VITE_SERVER_URL
   }/cart/get/item/${user_id}/${product_id}`;

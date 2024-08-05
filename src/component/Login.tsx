@@ -8,6 +8,8 @@ import Input from "./Input";
 import Button from "./Button";
 import { loginUser } from "../api/userApi";
 
+import { toastError, toastSuccess } from "../utils/toast";
+
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,12 +21,15 @@ function Login() {
     try {
       const session = await loginUser(data);
 
-      if (session) {
-        console.log("session", session);
-        console.log("data", session.data.data.user);
+      if (session.data.success) {
         const userData = session.data.data.user;
         dispatch(storeLogin({ userData }));
+
+        toastSuccess("Login Success");
+
         navigate("/");
+      } else {
+        toastError("UserName or Password Incorrect");
       }
     } catch (error) {
       console.log(error);

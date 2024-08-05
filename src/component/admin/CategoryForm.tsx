@@ -4,6 +4,7 @@ import Input from "../Input";
 import { FieldValue, FieldValues, useForm } from "react-hook-form";
 import { addCategory } from "../../api/adminApi";
 import { useNavigate } from "react-router-dom";
+import { toastError, toastSuccess } from "../../utils/toast";
 function CategoryForm() {
   const { handleSubmit, register } = useForm();
   const navigate = useNavigate();
@@ -11,7 +12,10 @@ function CategoryForm() {
     const categoryAddResponse = await addCategory(data);
     console.log("category add response ", categoryAddResponse);
     if (categoryAddResponse.data.success) {
+      toastSuccess("Category Added Successfully");
       navigate("/admin/inventory");
+    } else {
+      toastError("Category Creation Failed");
     }
   };
   return (

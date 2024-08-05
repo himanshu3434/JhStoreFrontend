@@ -14,6 +14,7 @@ import { cudToCart, getCartItemQuantity } from "../api/cartApi";
 import { Iuser } from "../types/types";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import ProductPhotos from "../component/ProductPhotos";
+import { toastError, toastSuccess } from "../utils/toast";
 const initialState = {
   _id: "",
   name: "",
@@ -71,11 +72,13 @@ function ProductDetails() {
         product_id: productDetails._id,
         quantity: quantity,
       };
-      console.log("request data in product dtails ", data);
+
       const addToCartResponse = await cudToCart(data);
 
       if (addToCartResponse.data.success) {
-        navigate("/products");
+        toastSuccess("Product Added to Cart");
+      } else {
+        toastError("Cart Operation Failed");
       }
     } else navigate("/login");
   };

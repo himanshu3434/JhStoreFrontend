@@ -5,6 +5,7 @@ import Button from "../Button";
 import Select from "../Select";
 import { createNewProduct, fetchAllCategories } from "../../api/adminApi";
 import { useNavigate } from "react-router-dom";
+import { toastError, toastSuccess } from "../../utils/toast";
 function ProductForm() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
@@ -29,10 +30,12 @@ function ProductForm() {
     //console.log("sending data", data);
 
     const createProductResponse = await createNewProduct(data);
-    // console.log("recieved ", createProductResponse);
+
     if (createProductResponse.data.success) {
-      // console.log("successs ", createProductResponse.data);
+      toastSuccess("Product Created Successfully");
       navigate("/admim/inventory");
+    } else {
+      toastError("Product Creation Failed");
     }
   };
   return (
