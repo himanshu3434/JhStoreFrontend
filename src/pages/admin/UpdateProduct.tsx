@@ -22,7 +22,7 @@ function UpdateProduct() {
   return (
     <div className="flex">
       <div>
-        <AdminSideBar />
+        <AdminSideBar selectedItem="Inventory" />
       </div>
       <div className="flex-1 ">
         <h1 className="font-bold text-3xl text-center uppercase ">

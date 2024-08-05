@@ -44,7 +44,7 @@ function Inventory() {
   return (
     <div className="flex">
       <div>
-        <AdminSideBar />
+        <AdminSideBar selectedItem="Inventory" />
       </div>
       <div>
         <div className="fixed bottom-8 right-8  hover:bg-red-300 rounded-3xl p-3 bg-red-400  cursor-pointer  group ">

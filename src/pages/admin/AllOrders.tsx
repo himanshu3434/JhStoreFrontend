@@ -12,7 +12,7 @@ function AllOrders() {
     const allOrdersResponse = await fetchAllOrders(page);
 
     if (allOrdersResponse.data.success === true) {
-      console.log("all order data ", allOrdersResponse.data.data.OrdersDetails);
+      //   console.log("all order data ", allOrdersResponse.data.data.OrdersDetails);
       setTotalPageNumber(allOrdersResponse.data.data.totalPageNumber);
 
       setAllOrders(allOrdersResponse.data.data.OrdersDetails);
@@ -24,7 +24,7 @@ function AllOrders() {
   return (
     <div className="flex">
       <div>
-        <AdminSideBar />
+        <AdminSideBar selectedItem="Orders" />
       </div>
       <div>
         <table className=" table-fixed w-full text-center  border-seperate ">

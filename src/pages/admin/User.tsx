@@ -22,7 +22,7 @@ function User() {
   return (
     <div className="flex">
       <div>
-        <AdminSideBar />
+        <AdminSideBar selectedItem="Users" />
       </div>
       <div>
         <table className=" table-fixed w-full text-center  border-seperate ">

@@ -9,7 +9,7 @@ possible solution (cart store )  [FIXED]
 
 
 
-6 -when going from home page category to product category not showing in filter it is applied but not showing 
+6 -when going from home page category to product category not showing in filter it is applied but not showing  [FIXED]
 
 7 add focus color to admin sidebar on which panel is open 
 
@@ -34,6 +34,7 @@ possible solution (cart store )  [FIXED]
 
 15 remove all useless imports 
 
+16 -add restriction on add to cart when not logged in 
 
 
 
