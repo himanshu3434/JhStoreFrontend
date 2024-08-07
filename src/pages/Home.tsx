@@ -26,7 +26,7 @@ function Home() {
                   dispatch(updateFilter({ data: "Mobile", id: "category" }))
                 }
               >
-                <div className="w-[20vw] h-[30vh] flex flex-col justify-center items-center  p-5  hover:scale-105">
+                <div className="w-[20vw] h-[30vh] flex flex-col justify-center items-center  p-5  hover:scale-105 hover:opacity-70">
                   <img src="./banner7.jpg" alt="" className="w-[10vw] " />
                   <h3 className="font-semibold text-lg">Mobiles</h3>
                 </div>
@@ -38,7 +38,7 @@ function Home() {
                   dispatch(updateFilter({ data: "Laptop", id: "category" }))
                 }
               >
-                <div className="w-[20vw] h-[30vh] flex flex-col justify-center items-center  p-5 hover:scale-105">
+                <div className="w-[20vw] h-[30vh] flex flex-col justify-center items-center  p-5 hover:scale-105 hover:opacity-70">
                   <img src="./banner9.jpg" alt="" className="w-[9vw]" />
                   <h3 className="font-semibold text-lg">Laptops</h3>
                 </div>
@@ -49,7 +49,7 @@ function Home() {
                   dispatch(updateFilter({ data: "Watches", id: "category" }))
                 }
               >
-                <div className="w-[20vw] h-[30vh] flex flex-col justify-center items-center  p-5 hover:scale-105 ">
+                <div className="w-[20vw] h-[30vh] flex flex-col justify-center items-center  p-5 hover:scale-105 hover:opacity-70 ">
                   <img src="./banner10.jpg" alt="" className="w-[9vw]" />
                   <h3 className="font-semibold text-lg  ">Watches</h3>
                 </div>
