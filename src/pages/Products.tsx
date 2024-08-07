@@ -4,6 +4,7 @@ import { IProduct, filterHandler } from "../types/types";
 import { updateFilter } from "../features/filterSlice";
 import { RootState } from "../store/Store";
 import { fetchAllProductsWithFilters } from "../api/productsApi";
+import ProductsSkeleton from "../component/SkeletonLoading/ProductsSkeleton";
 
 const Filters = lazy(() => import("../component/products/Filters"));
 const Product = lazy(() => import("../component/products/Product"));
@@ -11,6 +12,7 @@ const Pagination = lazy(() => import("../component/Pagination"));
 function Products() {
   const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [totalPageNumber, setTotalPageNumber] = useState(1);
   const FilterChangeHandler = async (e: filterHandler) => {
     dispatch(
@@ -28,6 +30,7 @@ function Products() {
     if (allProducts.data.success) {
       setTotalPageNumber(allProducts.data.data.totalPageNumber);
       setProducts(allProducts.data.data.limitedProductList);
+      setLoading(false);
     }
   };
 
@@ -52,19 +55,27 @@ function Products() {
         </select>
       </div>
 
-      <div className="mt-14  p-4 ">
-        <div className="flex  flex-wrap  justify-center">
-          {products.map((product: IProduct) => {
-            return <Product key={product._id} productDetails={product} />;
-          })}
-        </div>
-
-        {totalPageNumber > 1 ? (
-          <div>
-            <Pagination page={page} setPage={setPage} total={totalPageNumber} />
+      {loading ? (
+        <ProductsSkeleton />
+      ) : (
+        <div className="mt-14  p-4 ">
+          <div className="flex  flex-wrap  justify-center">
+            {products.map((product: IProduct) => {
+              return <Product key={product._id} productDetails={product} />;
+            })}
           </div>
-        ) : null}
-      </div>
+
+          {totalPageNumber > 1 ? (
+            <div>
+              <Pagination
+                page={page}
+                setPage={setPage}
+                total={totalPageNumber}
+              />
+            </div>
+          ) : null}
+        </div>
+      )}
     </div>
   );
 }

@@ -19,8 +19,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/Store";
 import { Iuser } from "../types/types";
 import { toastError, toastInfo, toastSuccess } from "../utils/toast";
+import { RotatingLines } from "react-loader-spinner";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 function CheckOutForm({ allCartItems, discount }: any) {
+  const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -38,8 +40,10 @@ function CheckOutForm({ allCartItems, discount }: any) {
       redirect: "if_required",
     });
 
-    if (error) console.log("error  ", error);
-    else {
+    if (error) {
+      console.log("error  ", error);
+      setLoading(false);
+    } else {
       console.log("payment intent   ", paymentIntent);
       if (paymentIntent.status === "succeeded") {
         let subTotal = paymentIntent.amount / 100;
@@ -54,6 +58,7 @@ function CheckOutForm({ allCartItems, discount }: any) {
 
         if (orderCreateResponse.data.success) {
           toastSuccess("Order Placed Successfully");
+
           navigate("/orders");
         } else {
           toastError("Order Failed");
@@ -70,8 +75,22 @@ function CheckOutForm({ allCartItems, discount }: any) {
           <Button
             type="submit"
             className="hover:bg-blue-300 w-full bg-blue-400 text-white font-semibold my-2 h-[7vh] rounded-lg"
+            onClick={() => setLoading(true)}
           >
-            Submit{" "}
+            {loading ? (
+              <div className="w-full h-full flex justify-center items-center">
+                <RotatingLines
+                  visible={true}
+                  width="24"
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  ariaLabel="rotating-lines-loading"
+                />
+              </div>
+            ) : (
+              "Submit"
+            )}
           </Button>
         </form>
       </div>

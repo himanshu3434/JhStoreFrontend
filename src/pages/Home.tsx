@@ -5,7 +5,6 @@ import { updateFilter } from "../features/filterSlice";
 function Home() {
   const dispatch = useDispatch();
 
-  console.log("we are in home ");
   return (
     <div>
       <div className="absolute inset-0 -z-10">
@@ -50,18 +49,18 @@ function Home() {
                   dispatch(updateFilter({ data: "Watches", id: "category" }))
                 }
               >
-                <div className="w-[20vw] h-[30vh] flex flex-col justify-center items-center  p-5 hover:scale-105">
+                <div className="w-[20vw] h-[30vh] flex flex-col justify-center items-center  p-5 hover:scale-105 ">
                   <img src="./banner10.jpg" alt="" className="w-[9vw]" />
-                  <h3 className="font-semibold text-lg">Watches</h3>
+                  <h3 className="font-semibold text-lg  ">Watches</h3>
                 </div>
               </Link>
             </div>
           </div>
           <img
             src="
-        ./banner6.jpg"
+      ./banner6.jpg"
             alt=""
-            className=" h-[50vh]"
+            className=" h-[50vh] "
           />
         </div>
       </div>

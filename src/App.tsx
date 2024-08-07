@@ -30,6 +30,8 @@ import { Iuser } from "./types/types";
 import { RootState } from "./store/Store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HomeSkeleton from "./component/SkeletonLoading/HomeSkeleton";
+import ProductsSkeleton from "./component/SkeletonLoading/ProductsSkeleton";
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -54,204 +56,211 @@ function App() {
       })
       .finally(() => setLoading(false));
   }, []);
-  return loading ? (
-    <div>Loading .....</div>
-  ) : (
+  return (
     <div className="">
       <Header />
-      <div>
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </Suspense>
-      </div>
+      {loading ? (
+        <HomeSkeleton />
+      ) : (
+        <div>
+          <div>
+            <Suspense fallback={<HomeSkeleton />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+              </Routes>
+            </Suspense>
+          </div>
 
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
 
-      <div className="px-2 md:px-5">
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route
-              path="/login"
-              element={
-                <AuthLayout
-                  authentication={false}
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={false}
-                >
-                  <Login />
-                </AuthLayout>
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <AuthLayout
-                  authentication={false}
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={false}
-                >
-                  <Signup />
-                </AuthLayout>
-              }
-            />
-          </Routes>
-          <Routes>
-            <Route
-              path="/profile"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={false}
-                >
-                  <Profile />
-                </AuthLayout>
-              }
-            />
-            <Route
-              path="/orders"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={false}
-                >
-                  <Order />
-                </AuthLayout>
-              }
-            />
-            <Route
-              path="/address"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={false}
-                >
-                  <Address />
-                </AuthLayout>
-              }
-            />
+          <div className="px-2 md:px-5">
+            <Suspense fallback={<Loading />}>
+              <Routes>
+                <Route
+                  path="/login"
+                  element={
+                    <AuthLayout
+                      authentication={false}
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={false}
+                    >
+                      <Login />
+                    </AuthLayout>
+                  }
+                />
+                <Route
+                  path="/signup"
+                  element={
+                    <AuthLayout
+                      authentication={false}
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={false}
+                    >
+                      <Signup />
+                    </AuthLayout>
+                  }
+                />
+              </Routes>
+              <Routes>
+                <Route
+                  path="/profile"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={false}
+                    >
+                      <Profile />
+                    </AuthLayout>
+                  }
+                />
+                <Route
+                  path="/orders"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={false}
+                    >
+                      <Order />
+                    </AuthLayout>
+                  }
+                />
+                <Route
+                  path="/address"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={false}
+                    >
+                      <Address />
+                    </AuthLayout>
+                  }
+                />
 
-            <Route
-              path="/cart"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={false}
-                >
-                  <Cart />
-                </AuthLayout>
-              }
-            />
-            <Route
-              path="/pay"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={false}
-                >
-                  <CheckOut />
-                </AuthLayout>
-              }
-            />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            {/* <Route path="/wishList" element={<WishList />} /> */}
-          </Routes>
-          <Routes>
-            <Route
-              path="/admin"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={true}
-                >
-                  <User />
-                </AuthLayout>
-              }
-            />
-            <Route
-              path="/admin/inventory"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={true}
-                >
-                  <Inventory />
-                </AuthLayout>
-              }
-            />
-            <Route
-              path="/admin/orders"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={true}
-                >
-                  <AllOrders />
-                </AuthLayout>
-              }
-            />
+                <Route
+                  path="/cart"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={false}
+                    >
+                      <Cart />
+                    </AuthLayout>
+                  }
+                />
+                <Route
+                  path="/pay"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={false}
+                    >
+                      <CheckOut />
+                    </AuthLayout>
+                  }
+                />
+                <Route path="/products" element={<Products />} />
+                <Route path="/product/:id" element={<ProductDetails />} />
+                {/* <Route path="/wishList" element={<WishList />} /> */}
+              </Routes>
+              <Routes>
+                <Route
+                  path="/admin"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={true}
+                    >
+                      <User />
+                    </AuthLayout>
+                  }
+                />
+                <Route
+                  path="/admin/inventory"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={true}
+                    >
+                      <Inventory />
+                    </AuthLayout>
+                  }
+                />
+                <Route
+                  path="/admin/orders"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={true}
+                    >
+                      <AllOrders />
+                    </AuthLayout>
+                  }
+                />
 
-            {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
-            <Route
-              path="/admin/users"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={true}
-                >
-                  <User />
-                </AuthLayout>
-              }
-            />
-            <Route
-              path="/admin/updateProduct"
-              element={
-                <AuthLayout
-                  authentication
-                  userStatus={userStatus}
-                  isAdmin={userData?.role === "admin" ? true : false}
-                  adminOnly={true}
-                >
-                  <UpdateProduct />
-                </AuthLayout>
-              }
-            />
-          </Routes>
-        </Suspense>
-      </div>
+                {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
+                <Route
+                  path="/admin/users"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={true}
+                    >
+                      <User />
+                    </AuthLayout>
+                  }
+                />
+                <Route
+                  path="/admin/updateProduct"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={true}
+                    >
+                      <UpdateProduct />
+                    </AuthLayout>
+                  }
+                />
+                <Route path="/testing" element={<ProductsSkeleton />}>
+                  {" "}
+                </Route>
+              </Routes>
+            </Suspense>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

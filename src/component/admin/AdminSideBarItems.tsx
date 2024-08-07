@@ -14,7 +14,7 @@ function AdminSideBarItems({ name, Icon, to, selectedItem }: ItemType) {
     console.log("admin side bar item re render   ", selectedItem);
     setRequiredClasses(
       selectedItem === name
-        ? "bg-gradient-to-r from-blue-300 to-blue-400 text-slate-100 "
+        ? "bg-gradient-to-r  from-[#fcfcfc] to-[#b5e2ff] text-slate-400 shadow-sm  "
         : ""
     );
   }, [selectedItem]);
@@ -23,7 +23,7 @@ function AdminSideBarItems({ name, Icon, to, selectedItem }: ItemType) {
     <li>
       <Link to={to}>
         <div
-          className={`flex space-x-2 items-center hover:bg-gradient-to-r from-blue-300 to-blue-400  hover:text-slate-100 p-3 rounded-lg  ${requiredClasses}  `}
+          className={`flex space-x-2 items-center hover:bg-gradient-to-r from-[#fff] to-[#b5e2ff]  hover:text-slate-600 p-3 rounded-lg  ${requiredClasses}  `}
         >
           <div>
             <Icon />

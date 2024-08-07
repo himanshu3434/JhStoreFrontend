@@ -39,7 +39,7 @@ function Signup() {
 
   return (
     <div>
-      <div className="w-[350px] h-[450px] rounded-xl p-5 mt-10 mb-10 ml-auto mr-auto bg-blue-300 text-white">
+      <div className="w-[350px] h-[450px] rounded-xl p-5 mt-10 mb-10 ml-auto mr-auto text-black shadow-xl">
         <div className="text-3xl mb-4 text-center font-bold">
           <h1>Sign up </h1>
         </div>
@@ -49,7 +49,7 @@ function Signup() {
           <form onSubmit={handleSubmit(signup)}>
             <div>
               <Input
-                className="rounded-lg py-2 px-3 w-full text-black"
+                className="rounded-lg py-2 px-3 w-full text-black border border-gray-100"
                 placeholder="Enter your Full Name"
                 {...register("fullName", {
                   required: true,
@@ -58,7 +58,7 @@ function Signup() {
 
               <Input
                 type="email"
-                className="rounded-lg py-2 px-3 w-full mt-2 text-black"
+                className="rounded-lg py-2 px-3 w-full mt-2 text-black border border-gray-100"
                 placeholder="Enter your Email address"
                 {...register("email", {
                   required: true,
@@ -72,7 +72,7 @@ function Signup() {
               ></Input>
               <Input
                 type="password"
-                className="rounded-lg py-2 px-3 w-full mt-2 mb-2 text-black"
+                className="rounded-lg py-2 px-3 w-full mt-2 mb-2 text-black border border-gray-100"
                 placeholder="Enter your Password "
                 {...register("password", {
                   required: true,
@@ -87,7 +87,7 @@ function Signup() {
               />
               <Input
                 type="date"
-                className="rounded-lg py-2 px-3 w-full mt-2 text-black"
+                className="rounded-lg py-2 px-3 w-full mt-2 text-black border border-gray-100"
                 placeholder="enter you Date"
                 {...register("dob", {
                   required: true,
@@ -96,7 +96,7 @@ function Signup() {
 
               <Button
                 type="submit"
-                className="bg-sky-500 w-full py-2  mt-2 rounded-lg "
+                className="bg-sky-500 w-full py-2  mt-2 rounded-lg text-white "
               >
                 Create Account
               </Button>
@@ -110,7 +110,7 @@ function Signup() {
         >
           <p>Already have a Account ? </p>
           <Link to="/login">
-            <div className="pl-1 underline text-blue-200">Sign in</div>
+            <div className="pl-1 underline text-blue-400">Sign in</div>
           </Link>
         </div>
       </div>

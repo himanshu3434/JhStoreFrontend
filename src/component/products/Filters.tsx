@@ -69,7 +69,7 @@ function Filters() {
 
       <hr className="my-3" />
 
-      <div className="space-y-2">
+      {/* <div className="space-y-2">
         <div className="font-bold  text-xl text-center mb-4">Rating</div>
 
         <select
@@ -85,8 +85,8 @@ function Filters() {
         </select>
 
         <br />
-      </div>
-      <hr className="py-3" />
+      </div> */}
+      {/* <hr className="py-3" /> */}
 
       <div>
         <div className="font-bold  text-xl text-center ">Price Range</div>
