@@ -46,3 +46,4 @@ NEXT VERSION
 9-arrange all api which are for admin to adminapi file from other file 
 11- add action in order of user 
 17 coupon add pge
+18-addd cart to store for showing a icon on top of number of items in cart   (when do this create skeleton loading for home and header both and change loading in apptsx to all the component )

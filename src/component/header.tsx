@@ -19,12 +19,15 @@ import { RootState } from "../store/Store";
 import { Iuser } from "../types/types";
 import useLogout from "../hooks/useLogout";
 import { GoChecklist } from "react-icons/go";
+import { getAllCartItems } from "../api/cartApi";
 
 function Header() {
   const [search, setSearch] = useState("");
+
   const dispatch = useDispatch();
   const logout = useLogout();
   const navigate = useNavigate();
+
   //this is for mobile navbar currently not used
   const searchFilterHandler = (data: FieldValues) => {
     data = data.search;
@@ -36,6 +39,7 @@ function Header() {
   const handlerLogout = async () => {
     await logout();
   };
+
   useEffect(() => {
     const searchTimeout = setTimeout(() => {
       const data = search;
@@ -150,7 +154,12 @@ function Header() {
           </div>{" "}
           <Link to="/cart">
             {" "}
-            <div className="group   hover:border-b-2 border-cyan-500">
+            <div className="group    hover:border-b-2 border-cyan-500">
+              {/* {totalQuantity !== 0 ? (
+                <div className="absolute right-3 top-4 bg-red-600 text-white rounded-full px-1 text-xs">
+                  {totalQuantity}
+                </div>
+              ) : null} */}
               <div className=" flex justify-center text-gray-500 group-hover:text-cyan-500">
                 <FiShoppingCart size={20} />
               </div>
@@ -166,3 +175,21 @@ function Header() {
 }
 
 export default Header;
+
+// useEffect(() => {
+//   const getCartItemsQuantity = async () => {
+//     console.log("userData  in header", userData);
+//     const getAllCartItemsResponse = await getAllCartItems(
+//       userData?._id || ""
+//     );
+
+//     if (getAllCartItemsResponse.data.success) {
+//       const quantityGrandtotal =
+//         getAllCartItemsResponse.data.data.totalQuantity;
+//       setTotalQuantity(quantityGrandtotal);
+
+//       console.log("quantityGrandtotal", quantityGrandtotal);
+//     }
+//   };
+//   if (userData !== null) getCartItemsQuantity();
+// }, []);

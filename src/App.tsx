@@ -32,6 +32,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomeSkeleton from "./component/SkeletonLoading/HomeSkeleton";
 import ProductsSkeleton from "./component/SkeletonLoading/ProductsSkeleton";
+import GenericLoader from "./component/SkeletonLoading/GenericLoader";
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -85,7 +86,7 @@ function App() {
           />
 
           <div className="px-2 md:px-5">
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<GenericLoader />}>
               <Routes>
                 <Route
                   path="/login"

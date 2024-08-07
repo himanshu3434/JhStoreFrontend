@@ -3,7 +3,7 @@ function HomeSkeleton() {
     <div>
       <div className=" p-6">
         <div className="w-full   mt-4 h-[40vh] bg-slate-200 rounded-lg animate-pulse"></div>
-        <div className="absolute right-[15vw] top-[40vh]  bg-slate-300 w-[8rem] h-[3rem] rounded-lg animate-pulse "></div>
+        <div className="absolute right-[15vw] top-[40vh]  bg-slate-100 w-[8rem] h-[3rem] rounded-lg animate-pulse "></div>
 
         <div className="flex mt-4">
           <div className="w-[70vw]">
