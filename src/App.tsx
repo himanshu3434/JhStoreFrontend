@@ -70,22 +70,6 @@ function App() {
                 <Route path="/" element={<Home />} />
               </Routes>
             </Suspense>
-          </div>
-
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
-
-          <div className="px-2 md:px-5">
             <Suspense fallback={<GenericLoader />}>
               <Routes>
                 <Route
@@ -115,6 +99,24 @@ function App() {
                   }
                 />
               </Routes>
+            </Suspense>
+          </div>
+
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+
+          <div className="px-2 md:px-5">
+            <Suspense fallback={<GenericLoader />}>
               <Routes>
                 <Route
                   path="/profile"

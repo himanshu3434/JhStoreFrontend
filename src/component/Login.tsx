@@ -37,8 +37,11 @@ function Login() {
   };
 
   return (
-    <div className="">
-      <div className=" w-[350px] h-[400px] rounded-xl p-5 mt-10 mb-10 ml-auto mr-auto  text-black shadow-xl">
+    <div className="flex justify-center items-center ">
+      <div className="  w-[100vw] h-[100vh] -z-10 rounded-2xl opacity-55">
+        <img src="./logotest3.jpg" alt="" className=" " />
+      </div>
+      <div className="absolute w-[350px] h-[400px] rounded-xl p-5 mt-10 mb-10  text-black shadow-2xl">
         <div className="text-3xl mb-4 text-center font-bold ">
           <h1 className="">Sign in</h1>
         </div>
@@ -88,7 +91,7 @@ function Login() {
           >
             <p>Don't have a Account ? </p>
             <Link to="/signup">
-              <div className="pl-1 underline text-blue-200">Sign Up</div>
+              <div className="pl-1 underline text-blue-600">Sign Up</div>
             </Link>
           </div>
         </div>
