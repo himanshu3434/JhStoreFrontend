@@ -5,7 +5,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Header = lazy(() => import("./component/header"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Products = lazy(() => import("./pages/Products"));
-const WishList = lazy(() => import("./pages/WishList"));
+
 const Inventory = lazy(() => import("./pages/admin/Inventory"));
 const Login = lazy(() => import("./component/Login"));
 const Signup = lazy(() => import("./component/Signup"));
@@ -16,23 +16,21 @@ const Order = lazy(() => import("./pages/Order"));
 const Address = lazy(() => import("./pages/Address"));
 const AllOrders = lazy(() => import("./pages/admin/AllOrders"));
 
-const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
 const UpdateProduct = lazy(() => import("./pages/admin/UpdateProduct"));
 const User = lazy(() => import("./pages/admin/User"));
 
-import Loading from "./component/Loading";
-import { getCurrentUser } from "./api/userApi";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "./features/authSlice";
+import { getCurrentUser } from "./api/userApi";
 import AuthLayout from "./component/AuthLayout";
+import { login, logout } from "./features/authSlice";
 
-import { Iuser } from "./types/types";
-import { RootState } from "./store/Store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GenericLoader from "./component/SkeletonLoading/GenericLoader";
 import HomeSkeleton from "./component/SkeletonLoading/HomeSkeleton";
 import ProductsSkeleton from "./component/SkeletonLoading/ProductsSkeleton";
-import GenericLoader from "./component/SkeletonLoading/GenericLoader";
+import { RootState } from "./store/Store";
+import { Iuser } from "./types/types";
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);

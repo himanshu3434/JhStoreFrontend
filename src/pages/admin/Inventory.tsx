@@ -1,14 +1,12 @@
-import React, { lazy, useEffect, useState } from "react";
-import AdminSideBar from "../../component/admin/AdminSideBar";
+import { lazy, useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import { DiVim } from "react-icons/di";
-import { IProduct } from "../../types/types";
-import { getAllCartItems } from "../../api/cartApi";
-import { getAllProducts } from "../../api/productsApi";
-import Button from "../../component/Button";
 import { useNavigate } from "react-router-dom";
+import { getAllProducts } from "../../api/productsApi";
+import AdminSideBar from "../../component/admin/AdminSideBar";
+import Button from "../../component/Button";
 import Pagination from "../../component/Pagination";
+import { IProduct } from "../../types/types";
 const CategoryForm = lazy(() => import("../../component/admin/CategoryForm"));
 const ProductForm = lazy(() => import("../../component/admin/ProductForm"));
 function Inventory() {

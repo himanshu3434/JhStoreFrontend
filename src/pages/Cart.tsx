@@ -1,13 +1,13 @@
-import React, { ChangeEvent, lazy, useEffect, useState } from "react";
-import { cudToCart, getAllCartItems } from "../api/cartApi";
+import { ChangeEvent, lazy, useEffect, useState } from "react";
+import { FiShoppingCart } from "react-icons/fi";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { cudToCart, getAllCartItems } from "../api/cartApi";
+import { checkCoupon } from "../api/couponApi";
+import Button from "../component/Button";
+import Input from "../component/Input";
 import { RootState } from "../store/Store";
 import { ICartItem, Iuser } from "../types/types";
-import Button from "../component/Button";
-import { useNavigate } from "react-router-dom";
-import { FiShoppingCart } from "react-icons/fi";
-import Input from "../component/Input";
-import { checkCoupon } from "../api/couponApi";
 const CartItem = lazy(() => import("../component/CartItem"));
 function Cart() {
   const [allCartItems, setAllCartItems] = useState([]);

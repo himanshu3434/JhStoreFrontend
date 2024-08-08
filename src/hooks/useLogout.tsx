@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logoutUserApi } from "../api/userApi";
 import { logout } from "../features/authSlice";
-import { AxiosResponse } from "axios";
 
 const useLogout = () => {
   const disptach = useDispatch();

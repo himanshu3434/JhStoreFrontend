@@ -1,14 +1,13 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
-import { fetchAllCategories } from "../../api/adminApi";
-import Select from "../Select";
-import Input from "../Input";
-import Button from "../Button";
+import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFilter } from "../../features/filterSlice";
-import { filterHandler } from "../../types/types";
 import { useNavigate } from "react-router-dom";
+import { fetchAllCategories } from "../../api/adminApi";
+import { updateFilter } from "../../features/filterSlice";
 import { RootState } from "../../store/Store";
+import { filterHandler } from "../../types/types";
+import Button from "../Button";
+import Input from "../Input";
 
 function Filters() {
   const { handleSubmit, register } = useForm();

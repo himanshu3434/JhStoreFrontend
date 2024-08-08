@@ -1,13 +1,12 @@
 import { FieldValues, useForm } from "react-hook-form";
-import Input from "./Input";
-import Select from "./Select";
-import Button from "./Button";
+import { useDispatch } from "react-redux";
+import { updateProfile } from "../api/userApi";
 import { login as storeLogin } from "../features/authSlice";
 import { Iuser } from "../types/types";
-import { updateProfile } from "../api/userApi";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { toastError, toastSuccess } from "../utils/toast";
+import Button from "./Button";
+import Input from "./Input";
+import Select from "./Select";
 type editFormType = {
   userData: Iuser;
   setEditToggle: React.Dispatch<React.SetStateAction<boolean>>;

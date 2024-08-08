@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { FaRegAddressBook, FaRegUser } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaRegAddressBook } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Iuser } from "../types/types";
-import { RootState } from "../store/Store";
-import { DiVim } from "react-icons/di";
-import { FieldValues, useForm } from "react-hook-form";
-import Button from "../component/Button";
-import Input from "../component/Input";
-import Select from "../component/Select";
-import ProfileEditForm from "../component/ProfileEditForm";
 import AddressEditForm from "../component/AddressEditForm";
+import Button from "../component/Button";
+import { RootState } from "../store/Store";
+import { Iuser } from "../types/types";
 
 function Address() {
   let userData = useSelector(

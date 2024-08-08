@@ -1,25 +1,20 @@
-import React, {
-  ChangeEvent,
-  FormEventHandler,
-  useEffect,
-  useState,
-} from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { createPaymentIntent } from "../api/paymentApi";
-import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
   PaymentElement,
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import Button from "./Button";
-import { orderCreate } from "../api/orderApi";
+import { loadStripe } from "@stripe/stripe-js";
+import { ChangeEvent, useEffect, useState } from "react";
+import { RotatingLines } from "react-loader-spinner";
 import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { orderCreate } from "../api/orderApi";
+import { createPaymentIntent } from "../api/paymentApi";
 import { RootState } from "../store/Store";
 import { Iuser } from "../types/types";
-import { toastError, toastInfo, toastSuccess } from "../utils/toast";
-import { RotatingLines } from "react-loader-spinner";
+import { toastError, toastSuccess } from "../utils/toast";
+import Button from "./Button";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 function CheckOutForm({ allCartItems, discount }: any) {
   const [loading, setLoading] = useState(false);

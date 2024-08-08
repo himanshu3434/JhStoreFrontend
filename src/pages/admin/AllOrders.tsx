@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import AdminSideBar from "../../component/admin/AdminSideBar";
-import { IOrderAndOrderItems } from "../../types/types";
+import { useEffect, useState } from "react";
 import { fetchAllOrders } from "../../api/orderApi";
+import AdminSideBar from "../../component/admin/AdminSideBar";
 import Pagination from "../../component/Pagination";
+import { IOrderAndOrderItems } from "../../types/types";
 
 function AllOrders() {
   const [allOrders, setAllOrders] = useState<IOrderAndOrderItems[]>([]);

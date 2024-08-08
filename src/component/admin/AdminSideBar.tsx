@@ -1,8 +1,6 @@
-import { useState } from "react";
-
 import { FaRegUserCircle } from "react-icons/fa";
-import { MdOutlineInventory2 } from "react-icons/md";
 import { LuBox } from "react-icons/lu";
+import { MdOutlineInventory2 } from "react-icons/md";
 
 import AdminSideBarItems from "./AdminSideBarItems";
 type AdminSideBarProps = {

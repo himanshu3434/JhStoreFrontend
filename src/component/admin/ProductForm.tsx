@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import Input from "../Input";
-import Button from "../Button";
-import Select from "../Select";
-import { createNewProduct, fetchAllCategories } from "../../api/adminApi";
 import { useNavigate } from "react-router-dom";
+import { createNewProduct, fetchAllCategories } from "../../api/adminApi";
 import { toastError, toastSuccess } from "../../utils/toast";
+import Button from "../Button";
+import Input from "../Input";
+import Select from "../Select";
 function ProductForm() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();

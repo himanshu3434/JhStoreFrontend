@@ -1,15 +1,14 @@
-import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
-import { login as storeLogin } from "../features/authSlice";
 import { FieldValues, useForm } from "react-hook-form";
-import Input from "./Input";
-import Button from "./Button";
-import Select from "./Select";
 import { loginUser, registerUser } from "../api/userApi";
-import { toastError, toastSuccess } from "../utils/toast";
+import { login as storeLogin } from "../features/authSlice";
+import { toastSuccess } from "../utils/toast";
+import Button from "./Button";
+import Input from "./Input";
+import Select from "./Select";
 function Signup() {
   const dispatch = useDispatch();
   const navigate = useNavigate();

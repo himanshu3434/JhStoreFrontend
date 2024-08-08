@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import AdminSideBar from "../../component/admin/AdminSideBar";
+import { useEffect, useState } from "react";
 import { fetchAllUsers } from "../../api/userApi";
-import { Iuser } from "../../types/types";
+import AdminSideBar from "../../component/admin/AdminSideBar";
 import Pagination from "../../component/Pagination";
+import { Iuser } from "../../types/types";
 
 function User() {
   const [allUser, setAllUser] = useState<Iuser[]>([]);

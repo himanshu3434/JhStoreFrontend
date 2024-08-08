@@ -1,19 +1,13 @@
-import React, {
-  useEffect,
-  useState,
-  MouseEvent,
-  MouseEventHandler,
-} from "react";
+import { MouseEvent, useEffect, useState } from "react";
+import { LuMinus, LuPlus } from "react-icons/lu";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { cudToCart, getCartItemQuantity } from "../api/cartApi";
 import { fetchSingleProductUsingId } from "../api/productsApi";
 import Button from "../component/Button";
-import Input from "../component/Input";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/Store";
-import { cudToCart, getCartItemQuantity } from "../api/cartApi";
-import { Iuser } from "../types/types";
-import { LuMinus, LuPlus } from "react-icons/lu";
 import ProductPhotos from "../component/ProductPhotos";
+import { RootState } from "../store/Store";
+import { Iuser } from "../types/types";
 import { toastError, toastSuccess } from "../utils/toast";
 const initialState = {
   _id: "",

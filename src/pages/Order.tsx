@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllUserOrders } from "../api/orderApi";
 import { IOrder } from "../types/types";
-import { GiConsoleController } from "react-icons/gi";
-import { set } from "react-hook-form";
 
 function Order() {
   const [orders, setOrders] = useState<IOrder[]>([]);

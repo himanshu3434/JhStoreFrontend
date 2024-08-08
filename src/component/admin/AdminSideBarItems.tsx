@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { Link } from "react-router-dom";
 interface ItemType {

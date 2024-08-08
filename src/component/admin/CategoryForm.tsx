@@ -1,10 +1,9 @@
-import React from "react";
+import { FieldValues, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { addCategory } from "../../api/adminApi";
+import { toastError, toastSuccess } from "../../utils/toast";
 import Button from "../Button";
 import Input from "../Input";
-import { FieldValue, FieldValues, useForm } from "react-hook-form";
-import { addCategory } from "../../api/adminApi";
-import { useNavigate } from "react-router-dom";
-import { toastError, toastSuccess } from "../../utils/toast";
 function CategoryForm() {
   const { handleSubmit, register } = useForm();
   const navigate = useNavigate();

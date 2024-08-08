@@ -1,11 +1,10 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { Iuser, productProps } from "../../types/types";
-import Button from "../Button";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/Store";
+import { NavLink, useNavigate } from "react-router-dom";
 import { cudToCart } from "../../api/cartApi";
+import { RootState } from "../../store/Store";
+import { Iuser, productProps } from "../../types/types";
 import { toastSuccess, toastWarning } from "../../utils/toast";
+import Button from "../Button";
 
 function Product({ productDetails }: productProps) {
   const userData = useSelector(

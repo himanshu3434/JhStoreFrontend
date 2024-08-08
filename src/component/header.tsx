@@ -1,25 +1,19 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 
-import { Link, useNavigate } from "react-router-dom";
-import { GrUserAdmin } from "react-icons/gr";
-import { FaBorderAll, FaRegAddressCard, FaRegUser } from "react-icons/fa";
-import { FiArchive } from "react-icons/fi";
-import { FiShoppingCart } from "react-icons/fi";
-import { GrLogin } from "react-icons/gr";
-import { FiEdit2 } from "react-icons/fi";
-import { GrLogout } from "react-icons/gr";
-import Input from "./Input";
-import { FieldValues, useForm } from "react-hook-form";
-import Button from "./Button";
+import { FieldValues } from "react-hook-form";
+import { FaRegAddressCard, FaRegUser } from "react-icons/fa";
+import { FiArchive, FiEdit2, FiShoppingCart } from "react-icons/fi";
+import { GoChecklist } from "react-icons/go";
+import { GrLogout, GrUserAdmin } from "react-icons/gr";
 import { TbLogin } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { updateFilter } from "../features/filterSlice";
+import useLogout from "../hooks/useLogout";
 import { RootState } from "../store/Store";
 import { Iuser } from "../types/types";
-import useLogout from "../hooks/useLogout";
-import { GoChecklist } from "react-icons/go";
-import { getAllCartItems } from "../api/cartApi";
+import Input from "./Input";
 
 function Header() {
   const [search, setSearch] = useState("");

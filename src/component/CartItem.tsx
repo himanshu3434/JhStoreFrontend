@@ -1,12 +1,11 @@
 import React, { MouseEvent, useState } from "react";
-import Button from "./Button";
 import { LuMinus, LuPlus } from "react-icons/lu";
-import { cudToCart } from "../api/cartApi";
+import { RxCross2 } from "react-icons/rx";
 import { useSelector } from "react-redux";
+import { cudToCart } from "../api/cartApi";
 import { RootState } from "../store/Store";
 import { ICartItem, Iuser } from "../types/types";
-import { RxCross2 } from "react-icons/rx";
-import { set } from "react-hook-form";
+import Button from "./Button";
 
 type cartItemWithDelete = {
   cartItem: ICartItem;

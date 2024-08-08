@@ -1,10 +1,10 @@
-import React, { lazy, useState, useEffect } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IProduct, filterHandler } from "../types/types";
-import { updateFilter } from "../features/filterSlice";
-import { RootState } from "../store/Store";
 import { fetchAllProductsWithFilters } from "../api/productsApi";
 import ProductsSkeleton from "../component/SkeletonLoading/ProductsSkeleton";
+import { updateFilter } from "../features/filterSlice";
+import { RootState } from "../store/Store";
+import { IProduct, filterHandler } from "../types/types";
 
 const Filters = lazy(() => import("../component/products/Filters"));
 const Product = lazy(() => import("../component/products/Product"));

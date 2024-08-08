@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { Iuser } from "../types/types";
-import { RootState } from "../store/Store";
-import { DiVim } from "react-icons/di";
-import { FieldValues, useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import Button from "../component/Button";
-import Input from "../component/Input";
-import Select from "../component/Select";
 import ProfileEditForm from "../component/ProfileEditForm";
+import { RootState } from "../store/Store";
+import { Iuser } from "../types/types";
 
 function Profile() {
   let userData = useSelector(
@@ -21,7 +17,6 @@ function Profile() {
       setIsLoading(false);
     }
   }, [userData]);
-  const dispatch = useDispatch();
 
   const formatter = new Intl.DateTimeFormat("en-US", {
     day: "2-digit",

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { dataType, IProduct } from "../../types/types";
-import { Field, FieldValues, useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { FieldValues, useForm } from "react-hook-form";
+import { dataType } from "../../types/types";
 
+import { useNavigate } from "react-router-dom";
+import { UpdateProductDetails } from "../../api/adminApi";
 import { getAllCategories } from "../../utils/utilityFunctions";
+import Button from "../Button";
 import Input from "../Input";
 import Select from "../Select";
-import Button from "../Button";
-import { UpdateProductDetails } from "../../api/adminApi";
-import { useNavigate } from "react-router-dom";
 
 function UpdateProductDetailsForm({ productData }: dataType) {
   const { register, handleSubmit } = useForm({

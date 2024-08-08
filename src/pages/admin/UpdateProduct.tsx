@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import AdminSideBar from "../../component/admin/AdminSideBar";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Button from "../../component/Button";
+import AdminSideBar from "../../component/admin/AdminSideBar";
 import UpdateProductDetailsForm from "../../component/admin/UpdateProductDetailsForm";
 import UpdateProductPhotosForm from "../../component/admin/UpdateProductPhotosForm";
 
