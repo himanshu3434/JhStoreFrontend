@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Button from "../component/Button";
