@@ -10,14 +10,13 @@ function Address() {
   let userData = useSelector(
     (state: RootState) => state.auth.userData
   ) as Iuser | null;
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [editToggle, setEditToggle] = useState(false);
-  useEffect(() => {
-    if (userData !== undefined) {
-      setIsLoading(false);
-    }
-  }, [userData]);
-  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   // if (userData !== undefined) {
+  //   //   setIsLoading(false);
+  //   // }
+  // }, [userData]);
 
   const displayData = (
     <div className="    flex flex-col items-center ">

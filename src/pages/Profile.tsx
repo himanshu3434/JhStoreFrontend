@@ -10,13 +10,13 @@ function Profile() {
   let userData = useSelector(
     (state: RootState) => state.auth.userData
   ) as Iuser | null;
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [editToggle, setEditToggle] = useState(false);
-  useEffect(() => {
-    if (userData !== undefined) {
-      setIsLoading(false);
-    }
-  }, [userData]);
+  // useEffect(() => {
+  //   if (userData !== undefined) {
+  //     setIsLoading(false);
+  //   }
+  // }, [userData]);
 
   const formatter = new Intl.DateTimeFormat("en-US", {
     day: "2-digit",

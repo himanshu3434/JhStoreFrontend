@@ -23,10 +23,10 @@ function Header() {
   const navigate = useNavigate();
 
   //this is for mobile navbar currently not used
-  const searchFilterHandler = (data: FieldValues) => {
-    data = data.search;
-    dispatch(updateFilter({ data, id: "search" }));
-  };
+  // const searchFilterHandler = (data: FieldValues) => {
+  //   data = data.search;
+  //   dispatch(updateFilter({ data, id: "search" }));
+  // };
   const userData = useSelector(
     (state: RootState) => state.auth.userData
   ) as Iuser | null;
