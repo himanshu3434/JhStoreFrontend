@@ -14,7 +14,6 @@ const FilterSlice = createSlice({
   initialState,
   reducers: {
     updateFilter: (state, action) => {
-      console.log("data ", action.payload.data, "   id ", action.payload.id);
       const id = action.payload.id;
       const data = action.payload.data;
       switch (id) {
@@ -35,8 +34,6 @@ const FilterSlice = createSlice({
           state.maxPrice = data.maxPrice;
           break;
       }
-
-      console.log("state value after updation", state.search);
     },
 
     clearFilter: (state) => {

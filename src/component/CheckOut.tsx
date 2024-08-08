@@ -21,12 +21,12 @@ function CheckOutForm({ allCartItems, discount }: any) {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
-  console.log(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!stripe || !elements) return;
-    console.log("elements  ", elements);
+
     const { paymentIntent, error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -39,7 +39,6 @@ function CheckOutForm({ allCartItems, discount }: any) {
       console.log("error  ", error);
       setLoading(false);
     } else {
-      console.log("payment intent   ", paymentIntent);
       if (paymentIntent.status === "succeeded") {
         let subTotal = paymentIntent.amount / 100;
         let transaction_id = paymentIntent.payment_method;

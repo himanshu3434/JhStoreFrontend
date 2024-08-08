@@ -36,7 +36,6 @@ function Cart() {
       (userData as Iuser | null)?._id || ""
     );
     if (response.data.success) {
-      console.log("cart item data ", response.data.data);
       const cartItemsArray = response.data.data.cartDetails;
       const total = response.data.data.subTotal;
       setSubTotal(total);
@@ -57,7 +56,6 @@ function Cart() {
           setValidCouponId(couponCheckResponse.data.data.dbCoupon._id);
           setDiscount(couponCheckResponse.data.data.dbCoupon.amount);
         } else {
-          console.log("invalid coupon");
           setValidCouponId("");
           setDiscount(0);
         }

@@ -21,10 +21,8 @@ function AuthLayout({
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("here   auth log in chec k");
     if (authentication && userStatus !== authentication) navigate("/login");
     else if (authentication === false && userStatus !== authentication) {
-      // console.log("going to home from authlayout ");
       navigate("/");
     }
 

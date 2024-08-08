@@ -18,7 +18,7 @@ function UpdateProduct() {
     setChoice(3);
     setHeading("Photos");
   };
-  console.log("   all data is ", data);
+
   return (
     <div className="flex">
       <div>

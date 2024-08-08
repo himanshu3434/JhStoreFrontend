@@ -8,7 +8,6 @@ function Order() {
     const fetchOrdersResponse = await getAllUserOrders();
 
     if (fetchOrdersResponse.data.success) {
-      console.log("orders user   ", fetchOrdersResponse.data.data);
       setOrders(fetchOrdersResponse.data.data);
     }
   };

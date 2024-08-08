@@ -12,7 +12,6 @@ function AllOrders() {
     const allOrdersResponse = await fetchAllOrders(page);
 
     if (allOrdersResponse.data.success === true) {
-      //   console.log("all order data ", allOrdersResponse.data.data.OrdersDetails);
       setTotalPageNumber(allOrdersResponse.data.data.totalPageNumber);
 
       setAllOrders(allOrdersResponse.data.data.OrdersDetails);

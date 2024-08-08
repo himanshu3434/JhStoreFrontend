@@ -20,8 +20,6 @@ function Filters() {
 
     if (allCategories.data.success) {
       setCategories(allCategories.data.data);
-
-      console.log("category all ", allCategories.data.data);
     }
   };
   useEffect(() => {

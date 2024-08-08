@@ -9,7 +9,7 @@ function CategoryForm() {
   const navigate = useNavigate();
   const onSubmit = async (data: FieldValues) => {
     const categoryAddResponse = await addCategory(data);
-    console.log("category add response ", categoryAddResponse);
+
     if (categoryAddResponse.data.success) {
       toastSuccess("Category Added Successfully");
       navigate("/admin/inventory");

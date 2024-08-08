@@ -24,7 +24,7 @@ function CartItem({
   const [cartItemQuantity, setCarItemQuantity] = useState(cartItem.quantity);
   const cartQuantityHandler = async (e: MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.id;
-    //  console.log("in addd ", "  ", id);
+
     let data = {
       user_id: (userData as Iuser | null)?._id as string,
       product_id: cartItem.productDetails._id,
@@ -44,7 +44,6 @@ function CartItem({
       }
     } else {
       if (cartItemQuantity < Number(cartItem.productDetails.stock)) {
-        //  console.log("in addd ", data, "  ");
         data.quantity = 1;
         await cudToCart(data);
         setSubTotal((prev) => prev + cartItem.productDetails.price);

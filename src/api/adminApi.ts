@@ -29,7 +29,6 @@ const fetchAllCategories = async () => {
 const createNewProduct = async (data: FieldValues) => {
   const createProductUrl = `${import.meta.env.VITE_SERVER_URL}/product/create`;
 
-  // console.log("adminApi", data);
   const options = {
     method: "POST",
     url: createProductUrl,
@@ -48,7 +47,6 @@ const UpdateProductDetails = async (data: FieldValues, _id: string) => {
     import.meta.env.VITE_SERVER_URL
   }/product/update/${_id}`;
 
-  // console.log("adminApi", data);
   const options = {
     method: "POST",
     url: updateProductDetailsUrl,
@@ -68,7 +66,7 @@ const updateProductPhotos = async (
   const updateProductPhotoUrl = `${
     import.meta.env.VITE_SERVER_URL
   }/product/update/photo/${photoName}/`;
-  // console.log(" going to upload data ", data);
+
   const formData = new FormData();
   formData.append("photo1", data.photo1[0]);
   formData.append("productId", productId);

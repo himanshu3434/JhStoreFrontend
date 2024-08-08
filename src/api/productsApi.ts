@@ -16,7 +16,6 @@ export const fetchAllProductsWithFilters = async (
     import.meta.env.VITE_SERVER_URL
   }/product/all/filter/${page}`;
 
-  // console.log("filterss", filter);
   const createOptions = {
     method: "POST",
     url: FilterUrl,

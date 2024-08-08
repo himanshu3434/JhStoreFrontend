@@ -83,7 +83,6 @@ function ProductDetails() {
         setQuantity((prev) => prev - 1);
       }
     } else {
-      console.log(cartQuantity);
       if (quantity < Number(productDetails.stock) - cartQuantity) {
         setQuantity((prev) => prev + 1);
       }
@@ -93,7 +92,7 @@ function ProductDetails() {
   const photoSwapHandler = (e: MouseEvent<HTMLImageElement>) => {
     let photoIndex: number;
     const id = e.currentTarget.id;
-    // console.log("in photo handler  id  ", id, "   ");
+
     switch (id) {
       case "productPhoto1":
         photoIndex = 0;

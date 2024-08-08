@@ -11,7 +11,6 @@ function AdminSideBarItems({ name, Icon, to, selectedItem }: ItemType) {
   const [requiredClasses, setRequiredClasses] = useState("");
 
   useEffect(() => {
-    console.log("admin side bar item re render   ", selectedItem);
     setRequiredClasses(
       selectedItem === name
         ? "bg-gradient-to-r  from-[#fcfcfc] to-[#b5e2ff] text-slate-400 shadow-sm  "

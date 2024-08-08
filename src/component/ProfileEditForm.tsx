@@ -48,7 +48,7 @@ const ProfileEditForm = ({ userData, setEditToggle }: editFormType) => {
       console.log(error);
     }
   };
-  // console.log("use date    ddddd", new Date(userData?.dob));
+
   return (
     <div className="w-1/2 flex  justify-center  mx-auto">
       <form onSubmit={handleSubmit(signup)}>

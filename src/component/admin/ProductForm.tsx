@@ -12,10 +12,9 @@ function ProductForm() {
   const [categories, setCategories] = useState([]);
   const getAllCategories = async () => {
     const allCategories = await fetchAllCategories();
-    console.log("category all response ", allCategories);
+
     if (allCategories.data.success) {
       setCategories(allCategories.data.data);
-      console.log("category all ", allCategories.data.data);
     }
   };
   useEffect(() => {
@@ -27,7 +26,6 @@ function ProductForm() {
     data.photo1 = data.photo1[0];
     data.photo2 = data.photo2[0];
     data.photo3 = data.photo3[0];
-    //console.log("sending data", data);
 
     const createProductResponse = await createNewProduct(data);
 
