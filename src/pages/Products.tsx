@@ -2,7 +2,7 @@ import { lazy, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProductsWithFilters } from "../api/productsApi";
 import ProductsSkeleton from "../component/SkeletonLoading/ProductsSkeleton";
-import { updateFilter } from "../features/filterSlice";
+import { clearFilter, updateFilter } from "../features/filterSlice";
 import { RootState } from "../store/Store";
 import { IProduct, filterHandler } from "../types/types";
 
@@ -33,7 +33,11 @@ function Products() {
       setLoading(false);
     }
   };
-
+  useEffect(() => {
+    return () => {
+      dispatch(clearFilter());
+    };
+  }, []);
   useEffect(() => {
     getAllProducts();
   }, [filters, page]);
