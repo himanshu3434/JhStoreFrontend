@@ -31,6 +31,7 @@ import HomeSkeleton from "./component/SkeletonLoading/HomeSkeleton";
 import ProductsSkeleton from "./component/SkeletonLoading/ProductsSkeleton";
 import { RootState } from "./store/Store";
 import { Iuser } from "./types/types";
+import axios from "axios";
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -43,6 +44,7 @@ function App() {
   ) as Iuser | null;
 
   useEffect(() => {
+    axios.defaults.withCredentials = true;
     getCurrentUser()
       .then((user) => {
         if (user.data.success) {
