@@ -59,7 +59,7 @@ function Products() {
         <ProductsSkeleton />
       ) : (
         <div className="mt-14  p-4 ">
-          <div className="flex  flex-wrap  justify-center">
+          <div className="flex  flex-wrap  ">
             {products.map((product: IProduct) => {
               return <Product key={product._id} productDetails={product} />;
             })}
