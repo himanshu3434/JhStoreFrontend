@@ -12,6 +12,7 @@ export const fetchAllProductsWithFilters = async (
   filter: filterType,
   page: number
 ) => {
+  axios.defaults.withCredentials = true;
   const FilterUrl = `${
     import.meta.env.VITE_SERVER_URL
   }/product/all/filter/${page}`;
@@ -31,6 +32,7 @@ export const fetchAllProductsWithFilters = async (
 };
 
 export const fetchSingleProductUsingId = async (id: string) => {
+  axios.defaults.withCredentials = true;
   const FilterUrl = `${import.meta.env.VITE_SERVER_URL}/product/${id}`;
 
   const createOptions = {
@@ -44,6 +46,7 @@ export const fetchSingleProductUsingId = async (id: string) => {
 };
 
 export const getAllProducts = async (page: number) => {
+  axios.defaults.withCredentials = true;
   const getAllProductUrl = `${
     import.meta.env.VITE_SERVER_URL
   }/product/all/${page}`;
