@@ -1,6 +1,5 @@
 import axios from "axios";
 import { FieldValues } from "react-hook-form";
-axios.defaults.withCredentials = true;
 const loginUser = async (data: FieldValues) => {
   const loginUrl = `${import.meta.env.VITE_SERVER_URL}/user/login`;
   const createOptions = {
@@ -34,12 +33,14 @@ const registerUser = async (data: FieldValues) => {
 };
 
 const getCurrentUser = async () => {
+  axios.defaults.withCredentials = true;
   const getCurrentUserUrl = `${
     import.meta.env.VITE_SERVER_URL
   }/user/getCurrentUser`;
   const options = {
     method: "GET",
     url: getCurrentUserUrl,
+    withCredentials: true,
   };
 
   const session = await axios.request(options);
