@@ -60,31 +60,21 @@ Welcome to **JHStore**, an e-commerce website . With advanced features like cart
 2. **Clone the Repository:**
    ```bash
    git clone <repository-url>
-
+   ```
 3. **Environment Variables:** Create a `.env` file in the root folder with the following schema:
    ```
-    PORT=""
-    MONGO_DB_URI=""
-   CORS_ORIGIN=""
-   ACCESS_TOKEN_SECRET=""
-   ACCESS_TOKEN_EXPIRY=""
-   REFRESH_TOKEN_SECRET=""
-   REFRESH_TOKEN_EXPIRY=""
-   CLOUDINARY_CLOUD_NAME=""
-   CLOUDINARY_API_KEY=""
-   CLOUDINARY_API_SECRET=""
-   PAGE_LIMIT=""
-   STRIPE_SECRET_KEY=""
+   VITE_SERVER_URL=""
+   VITE_STRIPE_PUBLISHABLE_KEY=""
+    ```
+
+   
 
 
-   ```
 
-4. **CORS Configuration:** Update the `CORS_ORIGIN` in the backend's `app.js` file to the frontend URL, e.g., `http://localhost:5173` for local development.
-
-5. **Install Dependencies:**
+4. **Install Dependencies:**
    ```bash
    npm install
-6. In both frontend and backend directories
+5. In both frontend and backend directories
    ```bash
     npm run dev
 
