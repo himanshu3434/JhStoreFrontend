@@ -1,4 +1,4 @@
-# JHStore Backend
+# JHStore 
 
 ## Project Overview
 
