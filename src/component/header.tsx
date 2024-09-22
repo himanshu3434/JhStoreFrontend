@@ -15,11 +15,7 @@ import { Iuser } from "../types/types";
 import Input from "./Input";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
-import {
-  IoIosArrowBack,
-  IoIosArrowDown,
-  IoIosArrowForward,
-} from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 
 function Header() {
   const [search, setSearch] = useState("");

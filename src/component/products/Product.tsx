@@ -36,7 +36,7 @@ function Product({ productDetails }: productProps) {
 
   return (
     <div className=" m-2">
-      <div className="  w-[22vw] shadow-lg rounded-lg ">
+      <div className=" w-[80vw] sm:w-[22vw] shadow-lg rounded-lg ">
         <NavLink to={`/product/${productDetails._id}`} className="">
           <div className="space-y-2 px-2">
             <div className="flex  justify-center">

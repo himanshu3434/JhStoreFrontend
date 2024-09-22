@@ -9,7 +9,11 @@ import { filterHandler } from "../../types/types";
 import Button from "../Button";
 import Input from "../Input";
 
-function Filters() {
+function Filters({
+  setIsOpenFilter,
+}: {
+  setIsOpenFilter: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const { handleSubmit, register } = useForm();
   const [categories, setCategories] = useState([]);
   const dispatch = useDispatch();
@@ -28,6 +32,7 @@ function Filters() {
 
   const priceFilterChangeHandler = async (data: FieldValues) => {
     dispatch(updateFilter({ data: data, id: "price" }));
+    setIsOpenFilter(false);
     navigate("/products");
   };
   const FilterChangeHandler = async (e: filterHandler) => {
@@ -37,11 +42,12 @@ function Filters() {
         id: e.target.id,
       })
     );
+    setIsOpenFilter(false);
 
     navigate("/products");
   };
   return (
-    <div className="h-screen w-[19vw] mt-5  px-2 ">
+    <div className="sm:h-screen sm:w-[19vw] mt-5  px-2 ">
       <div className="font-bold text-2xl text-center">
         <h1>Filter</h1>
       </div>
@@ -55,7 +61,7 @@ function Filters() {
         onChange={FilterChangeHandler}
         value={currentFilters.category}
       >
-        <option value="">None</option>
+        <option value="">ALL</option>
         {categories?.map((option) => (
           <option key={option} value={option}>
             {option}
@@ -87,17 +93,17 @@ function Filters() {
       <div>
         <div className="font-bold  text-xl text-center ">Price Range</div>
         <form onSubmit={handleSubmit(priceFilterChangeHandler)}>
-          <div className="flex">
+          <div className="flex justify-center">
             <Input
               label="Min Price :"
               placeholder="Min"
-              className=" w-[8vw] bg-gray-300  placeholder-slate-400 rounded-lg px-3 py-2"
+              className=" w-[30vw] sm:w-[8vw] bg-gray-300  placeholder-slate-400 rounded-lg px-3 py-2"
               {...register("minPrice", { required: true })}
             />
             <Input
               label="Max Price :"
               placeholder="Max"
-              className=" w-[8vw] bg-gray-300  placeholder-slate-400 rounded-lg px-3 py-2"
+              className=" w-[30vw] sm:w-[8vw] bg-gray-300  placeholder-slate-400 rounded-lg px-3 py-2"
               {...register("maxPrice", { required: true })}
             />
           </div>
