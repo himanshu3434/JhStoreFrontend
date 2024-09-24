@@ -76,8 +76,8 @@ function Cart() {
         <div className="mr-2">Cart</div>
         <FiShoppingCart className="" />
       </div>
-      <div className="flex  mt-4">
-        <div className="flex-1">
+      <div className="flex flex-col sm:flex-row justify-center items-center sm:items-stretch sm:justify-between mt-4">
+        <div className="flex-1 px-3 sm:px-0">
           {allCartItems.length > 0
             ? allCartItems.map((cartItem: ICartItem) => (
                 <CartItem
@@ -90,7 +90,7 @@ function Cart() {
               ))
             : null}
         </div>
-        <div className="w-[10rem]  ">
+        <div className="w-full sm:w-[10rem]  my-5 sm:my-0">
           <div className="font-semibold text-xl mb-4 text-center">
             Bill Details
           </div>

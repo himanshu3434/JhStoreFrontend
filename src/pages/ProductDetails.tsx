@@ -66,6 +66,7 @@ function ProductDetails() {
         product_id: productDetails._id,
         quantity: quantity,
       };
+      if (Number(productDetails.stock) - cartQuantity === 0) return;
 
       const addToCartResponse = await cudToCart(data);
 
@@ -147,7 +148,7 @@ function ProductDetails() {
             </div>
             <div>
               <div className="flex flex-col sm:flex-row  ">
-                <div
+                {/* <div
                   className={`absolute z-10 bg-red-700   py-3  flex items-center w-[46vw] justify-center  text-xl font-bold text-white ${
                     Number(productDetails.stock) - cartQuantity === 0
                       ? "visible"
@@ -155,7 +156,7 @@ function ProductDetails() {
                   } `}
                 >
                   No More Stock Go to Cart
-                </div>
+                </div> */}
                 <div
                   className={
                     " relative flex space-x-5 w-[30vw] sm:w-[10vw] justify-center items-center  bg-slate-200  rounded-md px-2 py-2 sm:py-1 shadow-sm sm:mr-4  my-2 sm:my-0 "
@@ -171,7 +172,11 @@ function ProductDetails() {
                 </div>
                 <Button
                   onClick={addToCartHandler}
-                  className="flex-1 bg-sky-500 text-white rounded-lg sm:py-2 hover:bg-sky-300 shadow-md text-2xl sm:text-xl font-bold py-4 my-3 sm:my-0"
+                  className={`flex-1  text-white rounded-lg sm:py-2 hover:bg-sky-300 shadow-md text-2xl sm:text-xl font-bold py-4 ${
+                    Number(productDetails.stock) - cartQuantity === 0
+                      ? "bg-sky-300"
+                      : "bg-sky-500"
+                  }  `}
                 >
                   Add To Cart
                 </Button>

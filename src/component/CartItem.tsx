@@ -67,11 +67,11 @@ function CartItem({
           <img
             src={cartItem.productDetails.coverPhoto}
             alt=""
-            className="w-[10rem] "
+            className="w-[7rem] sm:w-[10rem] "
           />
         </div>
-        <div className="space-y-8">
-          <div className="font-semibold  text-xl ">
+        <div className="space-y-8 w-1/3">
+          <div className="font-semibold  sm:text-xl ">
             {cartItem.productDetails.name}
           </div>
           <div className="text-lg">
@@ -79,8 +79,8 @@ function CartItem({
             {cartItem.productDetails.price}
           </div>
         </div>
-        <div className=" flex items-center justify-end 0 flex-1">
-          <div className=" flex space-x-5 w-[10vw] justify-center items-center  bg-slate-200  rounded-md px-2 py-1 shadow-sm ">
+        <div className=" flex items-center sm:justify-end justify-center flex-1">
+          <div className=" flex space-x-5 sm:w-[10vw] justify-center items-center  bg-slate-200  rounded-md px-2 py-1 shadow-sm ">
             <Button className="  " id="substract" onClick={cartQuantityHandler}>
               <LuMinus />
             </Button>
