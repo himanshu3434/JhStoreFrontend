@@ -120,7 +120,7 @@ function ProductDetails() {
   return (
     <div>
       <div className="text-center text-3xl font-bold my-4">Product Detail</div>
-      <div className="flex mt-5">
+      <div className="flex flex-col sm:flex-row mt-5">
         <ProductPhotos
           productPhotos={productPhotos}
           photoSwapHandler={photoSwapHandler}
@@ -146,7 +146,7 @@ function ProductDetails() {
               </div>
             </div>
             <div>
-              <div className="flex ">
+              <div className="flex flex-col sm:flex-row  ">
                 <div
                   className={`absolute z-10 bg-red-700   py-3  flex items-center w-[46vw] justify-center  text-xl font-bold text-white ${
                     Number(productDetails.stock) - cartQuantity === 0
@@ -158,24 +158,20 @@ function ProductDetails() {
                 </div>
                 <div
                   className={
-                    " relative flex space-x-5 w-[10vw] justify-center items-center  bg-slate-200  rounded-md px-2 py-1 shadow-sm mr-4"
+                    " relative flex space-x-5 w-[30vw] sm:w-[10vw] justify-center items-center  bg-slate-200  rounded-md px-2 py-2 sm:py-1 shadow-sm sm:mr-4  my-2 sm:my-0 "
                   }
                 >
-                  <Button
-                    className="  "
-                    id="substract"
-                    onClick={quantityHandler}
-                  >
-                    <LuMinus />
+                  <Button className="" id="substract" onClick={quantityHandler}>
+                    <LuMinus className="" />
                   </Button>
                   <div className="">{quantity}</div>
-                  <Button className="  " id="add" onClick={quantityHandler}>
-                    <LuPlus />
+                  <Button className="" id="add" onClick={quantityHandler}>
+                    <LuPlus className="" />
                   </Button>
                 </div>
                 <Button
                   onClick={addToCartHandler}
-                  className="flex-1 bg-sky-500 text-white rounded-lg py-2 hover:bg-sky-300 shadow-md"
+                  className="flex-1 bg-sky-500 text-white rounded-lg sm:py-2 hover:bg-sky-300 shadow-md text-2xl sm:text-xl font-bold py-4 my-3 sm:my-0"
                 >
                   Add To Cart
                 </Button>
