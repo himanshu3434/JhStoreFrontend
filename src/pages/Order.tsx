@@ -49,7 +49,7 @@ function Order() {
                 return (
                   <tr
                     className={
-                      index % 2 !== 0 ? `bg-gray-200  h-[3em]  ` : "h-[3em]"
+                      index % 2 !== 0 ? `bg-slate-100  h-[3em]  ` : "h-[3em]"
                     }
                     key={data._id}
                   >

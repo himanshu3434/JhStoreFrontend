@@ -1,17 +1,14 @@
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import { RxCross2 } from "react-icons/rx";
+
 import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../../api/productsApi";
 import AdminSideBar from "../../component/admin/AdminSideBar";
 import Button from "../../component/Button";
 import Pagination from "../../component/Pagination";
 import { IProduct } from "../../types/types";
-const CategoryForm = lazy(() => import("../../component/admin/CategoryForm"));
-const ProductForm = lazy(() => import("../../component/admin/ProductForm"));
+
 function Inventory() {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [formNo, setFormNo] = useState(0);
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
   const navigate = useNavigate();
   const [totalPageNumber, setTotalPageNumber] = useState(1);
@@ -24,18 +21,11 @@ function Inventory() {
       setAllProducts(getAllProductsResponse.data.data.allProducts);
     }
   };
-  // const toggleOpen = () => {
-  //   setIsOpen((prev) => !prev);
-  // };
 
   const handlerCategory = () => {
-    // setFormNo(1);
-    // toggleOpen();
     navigate("/admin/inventory/create/category");
   };
   const handlerProduct = () => {
-    // setFormNo(0);
-    // toggleOpen();
     navigate("/admin/inventory/create/product");
   };
   useEffect(() => {
@@ -64,22 +54,6 @@ function Inventory() {
           </div>
           <FaPlus color="white" />
         </div>
-
-        {/* <div>
-          {isOpen && (
-            <div className="fixed  inset-0 opacity-90 bg-gray-400   ">
-              <div className="absolute right-[30vw] bottom-[10vh]  w-[45vw] h-[85vh]  bg-yellow-500 ">
-                <div
-                  className="absolute right-2 top-2  cursor-pointer "
-                  onClick={toggleOpen}
-                >
-                  <RxCross2 size={20} />
-                </div>
-                {formNo == 1 ? <CategoryForm /> : <ProductForm />}
-              </div>
-            </div>
-          )}
-        </div> */}
       </div>
       <div>
         <table className=" table-fixed w-full text-center  border-seperate ">
@@ -97,12 +71,10 @@ function Inventory() {
           <tbody className="text-black">
             {allProducts.length > 0 &&
               allProducts.map((data, index) => {
-                // Option 1: Format the date according to your preferred locale (e.g., IST)
-
                 return (
                   <tr
                     className={
-                      index % 2 !== 0 ? `bg-gray-200  h-[3em] ` : "h-[3em]"
+                      index % 2 !== 0 ? `bg-slate-100  h-[3em] ` : "h-[3em]"
                     }
                     key={data._id}
                   >
