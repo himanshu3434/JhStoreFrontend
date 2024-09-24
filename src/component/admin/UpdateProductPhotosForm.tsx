@@ -33,8 +33,8 @@ function UpdateProductPhotosForm({ productData }: dataType) {
             Select Photo
           </h1>
 
-          <div className="flex  justify-between">
-            <div className="w-[15vw] text-center pt-2 pl-2 pr-2 ">
+          <div className="flex flex-col sm:flex-row items-center sm:justify-between space-y-5 sm:space-y-0">
+            <div className="sm:w-[15vw] text-center pt-2 pl-2 pr-2 ">
               <img
                 src={productData.photo1}
                 alt=""
@@ -48,7 +48,7 @@ function UpdateProductPhotosForm({ productData }: dataType) {
                 Update
               </Button>
             </div>
-            <div className="w-[15vw] text-center pt-2 pl-2 pr-2 ">
+            <div className="sm:w-[15vw] text-center pt-2 pl-2 pr-2 ">
               <img
                 src={productData.photo2}
                 alt=""
@@ -62,7 +62,7 @@ function UpdateProductPhotosForm({ productData }: dataType) {
                 Update
               </Button>
             </div>
-            <div className="w-[15vw] text-center pt-2 pl-2 pr-2">
+            <div className="sm:w-[15vw] text-center pt-2 pl-2 pr-2">
               <img
                 src={productData.photo3}
                 alt=""
@@ -76,7 +76,7 @@ function UpdateProductPhotosForm({ productData }: dataType) {
                 Update
               </Button>
             </div>
-            <div className="w-[15vw] text-center pt-2 pl-2 pr-2 ">
+            <div className="sm:w-[15vw] text-center pt-2 pl-2 pr-2 ">
               <img
                 src={productData.coverPhoto}
                 alt=""

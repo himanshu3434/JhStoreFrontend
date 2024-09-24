@@ -31,7 +31,7 @@ function UpdateProduct() {
         <h3 className="font-semibold text-lg text-center ">{data.name}</h3>
 
         {choice === 1 && (
-          <div className="flex justify-center space-x-6 pt-8">
+          <div className="flex flex-col sm:flex-row justify-center sm:space-x-6 pt-8 space-y-4 sm:space-y-0">
             <Button
               className="text-xl bg-yellow-400 p-2 rounded-lg hover:bg-yellow-300 text-slate-500"
               onClick={handleChoice2}

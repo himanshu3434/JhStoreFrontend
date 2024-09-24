@@ -12,9 +12,7 @@ function AdminSideBarItems({ name, Icon, to, selectedItem }: ItemType) {
 
   useEffect(() => {
     setRequiredClasses(
-      selectedItem === name
-        ? "bg-gradient-to-r  from-[#fcfcfc] to-[#b5e2ff] text-slate-400 shadow-sm  "
-        : ""
+      selectedItem === name ? "bg-sky-500 text-white shadow-sm  " : ""
     );
   }, [selectedItem]);
 
@@ -22,7 +20,7 @@ function AdminSideBarItems({ name, Icon, to, selectedItem }: ItemType) {
     <li>
       <Link to={to}>
         <div
-          className={`flex space-x-2 items-center hover:bg-gradient-to-r from-[#fff] to-[#b5e2ff]  hover:text-slate-600 p-3 rounded-lg  ${requiredClasses}  `}
+          className={`flex space-x-2 items-center hover:bg-sky-300 hover:text-white  p-3 rounded-lg  ${requiredClasses}  `}
         >
           <div>
             <Icon />

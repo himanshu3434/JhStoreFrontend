@@ -10,8 +10,8 @@ import { IProduct } from "../../types/types";
 const CategoryForm = lazy(() => import("../../component/admin/CategoryForm"));
 const ProductForm = lazy(() => import("../../component/admin/ProductForm"));
 function Inventory() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [formNo, setFormNo] = useState(0);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [formNo, setFormNo] = useState(0);
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
   const navigate = useNavigate();
   const [totalPageNumber, setTotalPageNumber] = useState(1);
@@ -24,17 +24,19 @@ function Inventory() {
       setAllProducts(getAllProductsResponse.data.data.allProducts);
     }
   };
-  const toggleOpen = () => {
-    setIsOpen((prev) => !prev);
-  };
+  // const toggleOpen = () => {
+  //   setIsOpen((prev) => !prev);
+  // };
 
   const handlerCategory = () => {
-    setFormNo(1);
-    toggleOpen();
+    // setFormNo(1);
+    // toggleOpen();
+    navigate("/admin/inventory/create/category");
   };
   const handlerProduct = () => {
-    setFormNo(0);
-    toggleOpen();
+    // setFormNo(0);
+    // toggleOpen();
+    navigate("/admin/inventory/create/product");
   };
   useEffect(() => {
     fetchAllProducts();
@@ -48,13 +50,13 @@ function Inventory() {
         <div className="fixed bottom-8 right-8  hover:bg-red-300 rounded-3xl p-3 bg-red-400  cursor-pointer  group ">
           <div className="invisible absolute right-4 bottom-10 group-hover:visible   w-36 bg-blue-300 text-center  leading-loose rounded-md ">
             <div
-              className="cursor-pointer hover:text-white"
+              className="cursor-pointer text-white hover:text-slate-200"
               onClick={handlerCategory}
             >
               Category
             </div>
             <div
-              className="cursore-pointer hover:text-white"
+              className="cursore-pointer text-white hover:text-slate-200"
               onClick={handlerProduct}
             >
               Product
@@ -63,7 +65,7 @@ function Inventory() {
           <FaPlus color="white" />
         </div>
 
-        <div>
+        {/* <div>
           {isOpen && (
             <div className="fixed  inset-0 opacity-90 bg-gray-400   ">
               <div className="absolute right-[30vw] bottom-[10vh]  w-[45vw] h-[85vh]  bg-yellow-500 ">
@@ -77,7 +79,7 @@ function Inventory() {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
       <div>
         <table className=" table-fixed w-full text-center  border-seperate ">

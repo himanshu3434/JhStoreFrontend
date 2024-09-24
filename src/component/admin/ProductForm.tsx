@@ -6,6 +6,7 @@ import { toastError, toastSuccess } from "../../utils/toast";
 import Button from "../Button";
 import Input from "../Input";
 import Select from "../Select";
+import AdminSideBar from "./AdminSideBar";
 function ProductForm() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
@@ -37,84 +38,90 @@ function ProductForm() {
     }
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-wrap mx-3"
-      encType="multipart/form-data"
-    >
-      <div className=" w-full">
-        <div className="font-semibold text-center   opacity-45  ">
-          Create Product{" "}
-        </div>
-        <Input
-          label="Name :"
-          placeholder="Product Name"
-          className=" rounded-lg py-1 px-2 w-full   placeholder-opacity-65"
-          {...register("name", { required: true })}
-        />
-        <Input
-          label="Description :"
-          placeholder="Description"
-          className=" rounded-lg py-1 px-2 w-full   placeholder-opacity-65"
-          {...register("description", { required: true })}
-        />
-        <Input
-          label="Stock :"
-          placeholder="Stock"
-          className=" rounded-lg py-1 px-2 w-full   placeholder-opacity-65"
-          {...register("stock", { required: true })}
-        />
-        <Input
-          label="Price :"
-          placeholder="Price"
-          className="  rounded-lg py-1 px-2 w-full   placeholder-opacity-65"
-          {...register("price", { required: true })}
-        />
+    <div className="flex">
+      <div>
+        <AdminSideBar selectedItem="Inventory" />
       </div>
-      <div className=" ">
-        <Input
-          label="Product CoverImage"
-          type="file"
-          className=" bg-gray-200"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("coverPhoto", { required: true })}
-        />
-        <Input
-          label="Product Image1 :"
-          type="file"
-          className=" bg-gray-200"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("photo1", { required: true })}
-        />
-        <Input
-          label="Product Image2 :"
-          type="file"
-          className=" bg-gray-200"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("photo2", { required: true })}
-        />
-        <Input
-          label="Product Image3 :"
-          type="file"
-          className=" bg-gray-200"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register("photo3", { required: true })}
-        />
 
-        <Select
-          options={categories}
-          label="Categories"
-          className=""
-          {...register("categoryName", { required: true })}
-        />
-        <Button
-          type="submit"
-          className="w-full mt-2  bg-sky-500 rounded-lg py-2 text-white hover:bg-sky-400"
-        >
-          "Submit"
-        </Button>
-      </div>
-    </form>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className=" w-[40vw] mx-auto shadow-lg p-5 rounded-2xl"
+        encType="multipart/form-data"
+      >
+        <div className=" w-full space-y-5">
+          <div className="font-semibold text-center   opacity-45  ">
+            Create Product{" "}
+          </div>
+          <Input
+            label="Name :"
+            placeholder="Product Name"
+            className=" rounded-lg py-2 px-3 w-full text-black bg-gray-200"
+            {...register("name", { required: true })}
+          />
+          <Input
+            label="Description :"
+            placeholder="Description"
+            className=" rounded-lg py-2 px-3 w-full text-black bg-gray-200"
+            {...register("description", { required: true })}
+          />
+          <Input
+            label="Stock :"
+            placeholder="Stock"
+            className=" rounded-lg py-2 px-3 w-full text-black bg-gray-200"
+            {...register("stock", { required: true })}
+          />
+          <Input
+            label="Price :"
+            placeholder="Price"
+            className="  rounded-lg py-2 px-3 w-full text-black bg-gray-200"
+            {...register("price", { required: true })}
+          />
+        </div>
+        <div className=" space-y-5 mt-5">
+          <Input
+            label="Product CoverImage:"
+            type="file"
+            className=" bg-gray-200 flex "
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("coverPhoto", { required: true })}
+          />
+          <Input
+            label="Product Image1 :"
+            type="file"
+            className=" bg-gray-200 flex"
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("photo1", { required: true })}
+          />
+          <Input
+            label="Product Image2 :"
+            type="file"
+            className=" bg-gray-200 flex"
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("photo2", { required: true })}
+          />
+          <Input
+            label="Product Image3 :"
+            type="file"
+            className=" bg-gray-200 flex "
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("photo3", { required: true })}
+          />
+
+          <Select
+            options={categories}
+            label="Categories"
+            className=""
+            {...register("categoryName", { required: true })}
+          />
+          <Button
+            type="submit"
+            className="w-full mt-2  bg-sky-500 rounded-lg py-2 text-white hover:bg-sky-400"
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 }
 

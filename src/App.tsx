@@ -32,6 +32,8 @@ import ProductsSkeleton from "./component/SkeletonLoading/ProductsSkeleton";
 import { RootState } from "./store/Store";
 import { Iuser } from "./types/types";
 import axios from "axios";
+import CategoryForm from "./component/admin/CategoryForm";
+import ProductForm from "./component/admin/ProductForm";
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -254,6 +256,33 @@ function App() {
                       adminOnly={true}
                     >
                       <UpdateProduct />
+                    </AuthLayout>
+                  }
+                />
+
+                <Route
+                  path="/admin/inventory/create/category"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={true}
+                    >
+                      <CategoryForm />
+                    </AuthLayout>
+                  }
+                />
+                <Route
+                  path="/admin/inventory/create/product"
+                  element={
+                    <AuthLayout
+                      authentication
+                      userStatus={userStatus}
+                      isAdmin={userData?.role === "admin" ? true : false}
+                      adminOnly={true}
+                    >
+                      <ProductForm />
                     </AuthLayout>
                   }
                 />
