@@ -47,7 +47,9 @@ function Header() {
     const searchTimeout = setTimeout(() => {
       const data = search;
       dispatch(updateFilter({ data, id: "search" }));
-      if (data.length !== 0) navigate("/products");
+      if (data.length !== 0) {
+        navigate("/products");
+      }
     }, 500);
 
     return () => {
@@ -114,7 +116,14 @@ function Header() {
 
   const ProfileHoverMobile = (
     <div>
-      <div className=" text-pink-700    ">
+      <div
+        className=" text-pink-700    "
+        onClick={() => {
+          setIsOpen(false);
+          setIsProfileOpen(false);
+          return;
+        }}
+      >
         {userData && userData.role === "admin" ? (
           <Link to="/admin">
             <div className="flex  items-center my-2 space-x-2 hover:text-gray-500 py-2">
@@ -264,7 +273,7 @@ function Header() {
             </div>
 
             <div className=" flex  flex-col items-center justify-end space-y-9 mt-8 ">
-              <Link to="/products">
+              <Link to="/products" onClick={toggleOpen}>
                 {" "}
                 <div className="  flex justify-center  w-36">
                   <p className=" text-2xl font-semibold      text-sky-600">
@@ -285,7 +294,7 @@ function Header() {
               </div>{" "}
               <Link to="/cart">
                 {" "}
-                <div className="flex justify-center w-36">
+                <div className="flex justify-center w-36" onClick={toggleOpen}>
                   {/* {totalQuantity !== 0 ? (
                 <div className="absolute right-3 top-4 bg-red-600 text-white rounded-full px-1 text-xs">
                   {totalQuantity}

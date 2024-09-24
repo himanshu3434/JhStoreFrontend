@@ -3,7 +3,7 @@ import Button from "../Button";
 function ProductCardSkeleton() {
   return (
     <div className=" m-2">
-      <div className="  w-[22vw] shadow-lg rounded-lg ">
+      <div className="  w-[80vw] sm:w-[22vw] shadow-lg rounded-lg ">
         <div className="space-y-2 px-2">
           <div className="flex  justify-center">
             <div className=" h-[25vh] lg:h-[30vh] w-3/4 animate-pulse bg-gray-100 rounded-xl"></div>

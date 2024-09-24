@@ -98,6 +98,7 @@ function App() {
                     </AuthLayout>
                   }
                 />
+                <Route path="/test" element={<HomeSkeleton />} />
               </Routes>
             </Suspense>
           </div>
